@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Beautiful Journey | A 6-Month Quest</title>
+    <style>
+        :root {
+            --primary: #f5da58;
+            --highlight: #323232;
+            --white: #ffffff;
+            --light-gray: #f9f9f9;
+            --mid-gray: #e0e0e0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Georgia, 'Times New Roman', Times, serif; /* Serif for body */
+            color: var(--highlight);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+        
+        h1, h2, h3, h4, h5, h6, .nav, .cta-button {
+            font-family: Helvetica, Arial, sans-serif; /* Sans-serif for headers */
+            font-weight: 700;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--primary);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--highlight);
+        }
+        
+        .logo span {
+            margin-left: 5px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-color: var(--primary);
+            padding: 160px 0 80px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p.tagline {
+            font-size: 24px;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .video-placeholder {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: rgba(0,0,0,0.05);
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        /* Main Content */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section:nth-child(even) {
+            background-color: var(--light-gray);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header h2:after {
+            content: "";
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Core Concept */
+        .concept-items {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .concept-item {
+            margin-bottom: 30px;
+        }
+        
+        .concept-item h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        /* Why Join */
+        .why-join {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .why-join ul {
+            margin-left: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .why-join li {
+            margin-bottom: 10px;
+        }
+        
+        /* Pillars */
+        .pillars {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .pillar {
+            flex: 1 1 300px;
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .pillar:hover {
+            transform: translateY(-10px);
+        }
+        
+        .pillar h3 {
+            font-size: 24px;
+            margin: 20px 0;
+            color: var(--highlight);
+        }
+        
+        .pillar-icon {
+            font-size: 48px;
+            color: var(--primary);
+        }
+        
+        /* Included Features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature {
+            padding: 20px;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .feature h3 {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .checkmark {
+            color: var(--primary);
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        
+        /* For Whom */
+        .for-whom {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Details */
+        .details {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .details-item {
+            margin-bottom: 20px;
+        }
+        
+        .details-item strong {
+            font-weight: bold;
+        }
+        
+        /* Warning */
+        .warning {
+            background-color: var(--primary);
+            padding: 40px;
+            border-radius: 8px;
+            margin: 40px 0;
+        }
+        
+        .warning h3 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            text-align: center;
+        }
+        
+        /* CTA */
+        .cta {
+            text-align: center;
+            padding: 100px 0;
+            background-color: var(--light-gray);
+        }
+        
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+        
+        .cta p {
+            font-size: 20px;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 30px 0;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--highlight);
+            color: var(--white);
+            padding: 15px 30px;
+            font-size: 18px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            min-width: 250px;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--primary);
+            color: var(--highlight);
+            transform: scale(1.05);
+        }
+        
+        .cta-button.secondary {
+            background-color: var(--white);
+            color: var(--highlight);
+            border: 2px solid var(--highlight);
+        }
+        
+        .cta-button.secondary:hover {
+            background-color: var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--highlight);
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .disclaimer {
+            margin-top: 40px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        /* Divider */
+        .divider {
+            height: 2px;
+            background-color: var(--mid-gray);
+            max-width: 200px;
+            margin: 60px auto;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p.tagline {
+                font-size: 20px;
+            }
+            
+            .section-header h2 {
+                font-size: 28px;
+            }
+            
+            .pillar {
+                flex: 1 1 100%;
+            }
+            
+            .cta h2 {
+                font-size: 28px;
+            }
+        }
+        
+        /* Sparkle Emoji Animation */
+        .sparkle {
+            display: inline-block;
+            animation: sparkle 1.5s infinite;
+        }
+        
+        @keyframes sparkle {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <span class="sparkle">✨</span> The Beautiful Journey
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1><span class="sparkle">✨</span> The Beautiful Journey</h1>
+            <p class="tagline">A 6-Month Quest to Step Into Your Truer Work & Life</p>
+            <p><em>🌿 "I finally built the creative space I was searching for—and I'd love for you to join."</em></p>
+            <p>Welcome to The Beautiful Journey—a 6-month immersive experience for creators, founders, and seekers ready to step into their next chapter their way.</p>
+            <p>You don't need another course.</p>
+            <p>You need living, breathing space for deep work, real connection & playful experimentation.</p>
+            <p>A place to be seen, be challenged & become more you.</p>
+            <p>This is The Beautiful Journey—a 6-month quest to step into your truest work and life.</p>
+            
+            <div class="video-placeholder">
+                <p>[INSERT INTRO VIDEO HERE]</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Join? (What Your Head Wants)</h2>
+            </div>
+
+            <div class="why-join">
+                <p>You have 'a thing', that feels interesting and important and will make your life and the world better. And now is the time to do something with it. Perhaps an idea, a business, a calling—something you want to offer the world.</p>
+                <p>Over 6 months, we will bring it to life.</p>
+                <ul>
+                    <li><strong>Clarity</strong> – Understand your unique strengths and how you apply them to your thing</li>
+                    <li><strong>Momentum</strong> – Keep moving, following the clues, refining as you go</li>
+                    <li><strong>Launch</strong> - get it out into the world</li>
+                </ul>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="section-header">
+                <h2>🔥 The Core Concept: Living & Working as YOU</h2>
+                <p>(what your heart and soul need)</p>
+            </div>
+
+            <div class="concept-items">
+                <p>This is about doing life & work your way—not following someone else's formula.</p>
+                <div class="concept-item">
+                    <h3>✨ Move closer to YOU</h3>
+                    <p>Live your life & work your way—guided by Astrology (The Myth of You ✨) and Human Design (Your GPS 🧭).</p>
+                </div>
+                <div class="concept-item">
+                    <h3>✨ Follow the clues</h3>
+                    <p>Keep evolving, be silly, stay playful, and enjoy the journey along the way.</p>
+                </div>
+                <div class="concept-item">
+                    <h3>✨ Be in meaningful connection</h3>
+                    <p>This is not a solo path—here, we do the work together.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>❤️ The Heart of The Beautiful Journey</h2>
+            </div>
+
+            <div class="pillars">
+                <div class="pillar">
+                    <div class="pillar-icon">🚀</div>
+                    <h3>The Quest</h3>
+                    <p><strong>A Journey of Transformation</strong></p>
+                    <p>6 months of stepping in—claiming your space, owning your gifts & navigating the mystical + practical.</p>
+                    <p>Includes 1:1 coaching, initiations & structured learning.</p>
+                </div>
+
+                <div class="pillar">
+                    <div class="pillar-icon">🌿</div>
+                    <h3>The Circle</h3>
+                    <p><strong>Sanctuary for Soulful Witnessing</strong></p>
+                    <p>Your Soul Crew—a trusted pod for deep conversations, radical honesty & support.</p>
+                </div>
+
+                <div class="pillar">
+                    <div class="pillar-icon">🛠️</div>
+                    <h3>The Lab</h3>
+                    <p><strong>Playground for Experimentation & Evolution</strong></p>
+                    <p>Where ideas come alive. Weekly co-working, workshops, embodied practices & real-time feedback.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>✨ What's Included</h2>
+            </div>
+
+            <div class="features">
+                <div class="feature">
+                    <h3><span class="checkmark">✅</span> Astrology & Human Design Reading</h3>
+                    <p>Decode your myth & GPS</p>
+                </div>
+                <div class="feature">
+                    <h3><span class="checkmark">✅</span> Kick-Off Intensive</h3>
+                    <p>Set intentions & activate your journey</p>
+                </div>
+                <div class="feature">
+                    <h3><span class="checkmark">✅</span> 1:1 Coaching</h3>
+                    <p>Move through blocks & breakthroughs</p>
+                </div>
+                <div class="feature">
+                    <h3><span class="checkmark">✅</span> Small Pod – Your Soul Crew</h3>
+                    <p>Deep connection & support</p>
+                </div>
+                <div class="feature">
+                    <h3><span class="checkmark">✅</span> Weekly Co-Working</h3>
+                    <p>Build momentum in your work</p>
+                </div>
+                <div class="feature">
+                    <h3><span class="checkmark">✅</span> Monthly Learning Events</h3>
+                    <p>Expand your wisdom & skillset</p>
+                </div>
+                <div class="feature">
+                    <h3><span class="checkmark">✅</span> Innovation & AI Wizardry</h3>
+                    <p>Befriend AI, learn to innovate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Who This is For</h2>
+            </div>
+
+            <div class="for-whom">
+                <p>For those who are done, done playing small.</p>
+                <p>For the visionaries, the creators, soul-preneurs, facilitators stepping into their next chapter.</p>
+                <p>For the ones ready to step into leadership—in their life, family, community, and work.</p>
+                <p>For those who want a space to be themselves, experiment boldly, and be deeply supported while building a meaningful, soul-aligned life and work.</p>
+                <p>For those who know 'it's time' - to engage, take action & move with the energy.</p>
+                <p>This is not for those looking for an easy path.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>The Details</h2>
+            </div>
+            
+            <div class="details">
+                <div class="details-item">
+                    <p><strong>Start Date:</strong> 1st April 2025</p>
+                </div>
+                <div class="details-item">
+                    <p><strong>Duration:</strong> 6 months</p>
+                </div>
+                <div class="details-item">
+                    <p><strong>Location:</strong> Zoom</p>
+                </div>
+                <div class="details-item">
+                    <p><strong>Time Commitment:</strong> Weekly sessions: 2 hours (daytime UK)<br>Plus Optional co-working</p>
+                </div>
+                <div class="details-item">
+                    <p><strong>Hosts:</strong> Kev Self (<a href="http://www.kevself.com" target="_blank">www.kevself.com</a>), Mari Burlong (<a href="https://www.reenchantingmoments.com/" target="_blank">www.reenchantingmoments.com</a>)</p>
+                </div>
+                <div class="details-item">
+                    <p class="price"><strong>£2,220</strong> (Alpha price)</p>
+                    <p>This is an investment in YOU. A space to be held, cherished & expanded in ways few others can. The space to breathe, as you.</p>
+                </div>
+            </div>
+
+            <div class="warning">
+                <h3>🌀 WARNING - Always Alpha</h3>
+                <p>A living experiment. Unpolished. Evolving. Created by those who show up.</p>
+                <p>If you need a step-by-step guide, this isn't for you. But if you thrive in deep inquiry, co-creation & magic (or wanna learn to), welcome home. 🏡</p>
+                <p>🚀 Times are moving fast.</p>
+                <p>The real skill we need isn't certainty—it's adaptability.</p>
+                <p>A quest has an intention, a direction, a place to orient toward. But no worthwhile quest knows exactly what will happen along the way.</p>
+                <p>🌿 Here, we believe in the perfectly imperfect.</p>
+                <p>🚀 We follow the clues & design as we go.</p>
+                <p>🔥 This journey will not be perfect. It WILL be perfectly imperfect.</p>
+                <p>✨ You may get what you want. You WILL get what you need.</p>
+                <p>If that calls to you, we're starting soon. Maybe you're made for this little group.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>🚀 Ready to Step In?</h2>
+            <p>If your heart says yes, let's talk.</p>
+            <p>Apply to join the next cohort of The Beautiful Journey & find your place in this constellation.</p>
+            
+            <div class="cta-buttons">
+                <a href="https://calendly.com/kevinself/50-minute-dicovery-with-kev" target="_blank" class="cta-button">✨ Wanna Play? Book a Discovery Call ✨</a>
+                <a href="mailto:me@kevself.com?subject=Question%20about%20The%20Beautiful%20Journey" class="cta-button secondary">Have Questions? Email Me</a>
+            </div>
+            
+            <div class="disclaimer">
+                <p>🌟 Alpha Website Disclaimer</p>
+                <p>This Alpha website was created in 2 hours with Anya (ChatGPT) & Claude AI.<br>Because done is better than perfect. 😉</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 The Beautiful Journey by Kevin Self</p>
+            <p>For questions: <a href="mailto:me@kevself.com">me@kevself.com</a></p>
+        </div>
+    </footer>
+</body>
+</html>
