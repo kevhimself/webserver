@@ -56,16 +56,21 @@
             background-color: var(--primary-color);
             padding: 1.5rem 0;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
         }
         
         .logo-container {
             display: flex;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
         }
         
         .logo-container img {
-            height: 50px;
-            margin-right: 15px;
+            height: auto;
+            width: 400px;
+            max-width: 100%;
+            margin-bottom: 15px;
         }
         
         .hero {
@@ -192,6 +197,15 @@
             }
             .section {
                 padding: 2rem 0;
+            }
+            .logo-container img {
+                width: 300px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-container img {
+                width: 250px;
             }
         }
     </style>
