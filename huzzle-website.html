@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huzzle - The Coziest Way to Get Sh*t Done</title>
+    <style>
+        :root {
+            --primary-color: #f5da58;
+            --highlight-color: #323232;
+            --text-color: #333;
+            --white: #fff;
+            --light-gray: #f5f5f5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Georgia, serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--white);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--highlight-color);
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-top: 2rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-container img {
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        .hero {
+            background-color: var(--primary-color);
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            margin-bottom: 1.5rem;
+            color: var(--highlight-color);
+        }
+        
+        .section {
+            padding: 3rem 0;
+        }
+        
+        .section:nth-child(even) {
+            background-color: var(--light-gray);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--highlight-color);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0.5rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #454545;
+            transform: translateY(-2px);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--highlight-color);
+            border: 2px solid var(--highlight-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--highlight-color);
+            color: var(--primary-color);
+        }
+        
+        .feature-box {
+            margin-bottom: 2rem;
+        }
+        
+        .feature-box p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .icon {
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        
+        .session-times {
+            margin: 2rem 0;
+        }
+        
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        footer {
+            background-color: var(--highlight-color);
+            color: var(--white);
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .social-links {
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: var(--white);
+            margin: 0 10px;
+            font-size: 1.2rem;
+        }
+        
+        .emoji {
+            font-size: 1.2em;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            .hero {
+                padding: 2rem 0;
+            }
+            .section {
+                padding: 2rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="huzzle_logo.png" alt="Huzzle Logo">
+                <h1>Huzzle</h1>
+            </div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>The Coziest Way to Get Sh*t Done!</h1>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container">
+            <h2>So... What's a Huzzle?</h2>
+            <p>A Huzzle is like co-working, but <em>cozier, more human, and way more fun.</em> It's a space where you can work on your own projects while feeling the quiet motivation of others doing the same. Think of it as:</p>
+            <div class="feature-box">
+                <p><span class="emoji">✨</span> The best parts of an in-person co-working space—without the commute.</p>
+                <p><span class="emoji">✨</span> A <em>gentle</em> way to stay accountable to what actually matters.</p>
+                <p><span class="emoji">✨</span> A mix of focused work time + human connection (and maybe a giggle or two).</p>
+            </div>
+            <p>If a <em>team huddle</em> and a <em>cuddle</em> had a baby, a <strong>Huzzle</strong> would pop out.</p>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container">
+            <h2>How Does It Work?</h2>
+            <div class="feature-box">
+                <p><span class="emoji">🔹</span> <strong>Show up on Zoom (cams on!)</strong> – because presence matters.</p>
+                <p><span class="emoji">🔹</span> <strong>Set an intention</strong> – what are you working on today?</p>
+                <p><span class="emoji">🔹</span> <strong>Work in focused blocks</strong> – with optional breaks for check-ins & chats.</p>
+                <p><span class="emoji">🔹</span> <strong>End with a quick reflection</strong> – feel the satisfaction of getting sh*t done.</p>
+            </div>
+            <p>Huzzle is a habit. A rhythm. A space that helps you move forward—week after week.</p>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container">
+            <h2>When & Where?</h2>
+            <p>We run <strong>Huzzle weekly</strong> at these times:</p>
+            <div class="session-times">
+                <p><span class="emoji">🕐</span> <strong>Wednesdays</strong>: 1pm - 4pm UK (8am - 11am Eastern | 5am - 8am Pacific)</p>
+                <p><span class="emoji">☀️</span> <strong>Thursdays</strong>: 9am - 11:30am UK (4am - 6:30am Eastern | 1am - 3:30am Pacific)</p>
+            </div>
+            <p><span class="emoji">💡</span> <a href="#" class="btn btn-primary" onclick="addToCalendar(event)"><span class="emoji">📅</span> Add to Google Calendar</a></p>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container">
+            <h2>What's the Commitment?</h2>
+            <div class="feature-box">
+                <p><span class="emoji">✔</span> <strong>Cams on</strong> – this is a space of presence, not lurking.</p>
+                <p><span class="emoji">✔</span> <strong>Make it a weekly habit</strong> – consistency = magic.</p>
+                <p><span class="emoji">✔</span> <strong>Bring work that matters</strong> – admin, deep focus work, that thing you've been avoiding.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container">
+            <h2>Price? You Choose.</h2>
+            <p>Huzzle is <strong>pay-what-you-want</strong>.</p>
+            <div class="feature-box">
+                <p><span class="emoji">💛</span> You can pay before or after.</p>
+                <p><span class="emoji">💛</span> Your contribution helps keep the Huzzle alive & thriving.</p>
+                <p><span class="emoji">💛</span> Every bit of support means we can keep showing up for you.</p>
+            </div>
+            <a href="https://buymeacoffee.com/kevself" class="btn btn-primary" target="_blank"><span class="emoji">☕</span> Buy Me a Coffee – Pay What You Want</a>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container">
+            <h2>Sign Up & Join the Huzzle!</h2>
+            <p><span class="emoji">👇</span> <strong>Pick your session & drop your details below.</strong> We'll send you the Zoom link.</p>
+            
+            <div class="form-container">
+                <form id="huzzle-signup">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="session">Select a Session</label>
+                        <select id="session" name="session" required>
+                            <option value="">Choose a session...</option>
+                            <option value="wednesday">Wednesday: 1pm - 4pm UK</option>
+                            <option value="thursday">Thursday: 9am - 11:30am UK</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn"><span class="emoji">📩</span> Join a Huzzle – Sign Up Now</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container" style="text-align: center;">
+            <h2>Have Questions or Need Support?</h2>
+            <p>Reach out anytime - we're here to help!</p>
+            <a href="mailto:me@kevself.com" class="btn">Email Us</a>
+            <a href="https://calendly.com/kevinself/50-minute-dicovery-with-kev" class="btn" target="_blank">Book a Discovery Call</a>
+            <a href="https://chatgpt.com/g/g-67c96918323c8191aca7af9ca7925f1a-bob" class="btn" target="_blank">Chat with Bob (AI Support)</a>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Huzzle. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://buymeacoffee.com/kevself" target="_blank">Support Huzzle</a>
+                <a href="mailto:me@kevself.com">Contact</a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Function to handle Google Calendar event creation
+        function addToCalendar(event) {
+            event.preventDefault();
+            
+            // Prompt user to select a session
+            const sessionType = prompt("Which session would you like to add to your calendar?\n1: Wednesday (1pm - 4pm UK)\n2: Thursday (9am - 11:30am UK)");
+            
+            let calendarUrl = "";
+            const today = new Date();
+            const nextWed = new Date(today);
+            const nextThu = new Date(today);
+            
+            // Find the next Wednesday
+            while (nextWed.getDay() !== 3) {
+                nextWed.setDate(nextWed.getDate() + 1);
+            }
+            
+            // Find the next Thursday
+            while (nextThu.getDay() !== 4) {
+                nextThu.setDate(nextThu.getDate() + 1);
+            }
+            
+            if (sessionType === "1") {
+                // Wednesday session
+                const startTime = new Date(nextWed);
+                startTime.setHours(13, 0, 0); // 1 PM UK
+                
+                const endTime = new Date(nextWed);
+                endTime.setHours(16, 0, 0); // 4 PM UK
+                
+                calendarUrl = createGoogleCalendarUrl("Huzzle Session - Wednesday", "Join the Huzzle co-working session! Zoom link will be provided by email.", startTime, endTime);
+            } else if (sessionType === "2") {
+                // Thursday session
+                const startTime = new Date(nextThu);
+                startTime.setHours(9, 0, 0); // 9 AM UK
+                
+                const endTime = new Date(nextThu);
+                endTime.setHours(11, 30, 0); // 11:30 AM UK
+                
+                calendarUrl = createGoogleCalendarUrl("Huzzle Session - Thursday", "Join the Huzzle co-working session! Zoom link will be provided by email.", startTime, endTime);
+            } else {
+                alert("Please select a valid session type (1 or 2)");
+                return;
+            }
+            
+            // Open the Google Calendar event in a new tab
+            if (calendarUrl) {
+                window.open(calendarUrl, '_blank');
+            }
+        }
+        
+        // Helper function to create Google Calendar URL
+        function createGoogleCalendarUrl(title, description, start, end) {
+            const formatDateTime = (date) => {
+                return date.toISOString().replace(/-|:|\.\d\d\d/g, "");
+            };
+            
+            return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&details=${encodeURIComponent(description)}&dates=${formatDateTime(start)}/${formatDateTime(end)}`;
+        }
+        
+        // Form submission handler
+        document.getElementById('huzzle-signup').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const session = document.getElementById('session').value;
+            
+            // In a real implementation, this would send data to your server
+            alert(`Thank you, ${name}! We've received your registration for the ${session} session. Please check ${email} for your Zoom link and further instructions.`);
+            
+            // Reset the form
+            this.reset();
+        });
+    </script>
+</body>
+</html>
