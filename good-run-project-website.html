@@ -17,14 +17,15 @@
     }
     
     body {
-      font-family: serif;
+      font-family: Georgia, Times, serif;
       line-height: 1.6;
       color: var(--charcoal);
+      font-size: 150%; /* Increased text size by 150% */
     }
     
     header {
       background-color: var(--yellow);
-      padding: 2rem 0;
+      padding: 3rem 0;
       text-align: center;
     }
     
@@ -32,7 +33,7 @@
       max-width: 400px;
       width: 100%;
       height: auto;
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
     }
     
     .container {
@@ -48,16 +49,16 @@
     
     h1 {
       font-size: 2.5rem;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
     
     h2 {
-      font-size: 1.8rem;
-      margin: 2rem 0 1rem;
+      font-size: 2rem;
+      margin: 2.5rem 0 1.5rem;
     }
     
     p {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.8rem;
     }
     
     em {
@@ -69,13 +70,13 @@
     }
     
     .intro {
-      padding: 3rem 0;
+      padding: 3.5rem 0;
       text-align: center;
       font-size: 1.2rem;
     }
     
     .section {
-      padding: 2rem 0;
+      padding: 3rem 0;
     }
     
     .section:nth-child(even) {
@@ -84,9 +85,9 @@
     
     .checklist li {
       list-style: none;
-      margin-bottom: 0.8rem;
+      margin-bottom: 1.2rem;
       position: relative;
-      padding-left: 2rem;
+      padding-left: 2.5rem;
     }
     
     .checklist li:before {
@@ -97,9 +98,9 @@
     
     .features li {
       list-style: none;
-      margin-bottom: 0.8rem;
+      margin-bottom: 1.2rem;
       position: relative;
-      padding-left: 2rem;
+      padding-left: 2.5rem;
     }
     
     .features li:before {
@@ -118,9 +119,9 @@
     
     .details li {
       list-style: none;
-      margin-bottom: 0.8rem;
+      margin-bottom: 1.2rem;
       position: relative;
-      padding-left: 2rem;
+      padding-left: 2.5rem;
     }
     
     .details li:before {
@@ -139,34 +140,37 @@
     
     .cta {
       background-color: var(--yellow);
-      padding: 3rem 0;
+      padding: 4rem 0;
       text-align: center;
-      margin-top: 2rem;
+      margin-top: 3rem;
     }
     
     .btn {
       display: inline-block;
       background-color: var(--charcoal);
       color: white;
-      padding: 0.8rem 1.5rem;
-      border-radius: 5px;
+      padding: 1.2rem 2rem;
+      border-radius: 8px;
       text-decoration: none;
       font-family: sans-serif;
       font-weight: bold;
-      margin: 1rem 0.5rem;
+      margin: 1.5rem 0;
       transition: transform 0.2s;
+      font-size: 1.2rem;
+      width: 80%;
+      max-width: 400px;
     }
     
     .btn:hover {
-      transform: translateY(-3px);
+      transform: translateY(-5px);
     }
     
     .author {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1.5rem;
-      margin: 2rem 0;
+      gap: 2rem;
+      margin: 3rem 0;
     }
     
     @media (min-width: 768px) {
@@ -184,8 +188,7 @@
       background-color: var(--charcoal);
       color: white;
       text-align: center;
-      padding: 2rem 0;
-      margin-top: 2rem;
+      padding: 3rem 0;
     }
     
     footer a {
@@ -193,13 +196,31 @@
       text-decoration: none;
     }
     
+    .final-cta {
+      background-color: var(--charcoal);
+      color: white;
+      text-align: center;
+      padding: 4rem 0;
+    }
+    
+    .final-cta h2 {
+      color: white;
+      margin-bottom: 2rem;
+    }
+    
+    .final-cta .btn {
+      background-color: var(--yellow);
+      color: var(--charcoal);
+      margin: 2rem 0;
+    }
+    
     @media (max-width: 768px) {
       h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
       }
       
       h2 {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
       }
       
       .container {
@@ -213,8 +234,7 @@
   <header>
     <div class="container">
       <img src="the_good_run_project_logo.png" alt="The Good Run Project Logo" class="logo">
-      <h1>The Good Run Project</h1>
-      <p><em>A new kind of 'run' club in Godalming</em></p>
+      <h1>A new kind of 'run' club in Godalming</h1>
     </div>
   </header>
   
@@ -282,7 +302,12 @@
       <h2>Curious?</h2>
       <p>Come along. Bring an open heart. See if it fills you up a little more.</p>
       <p>💬 <strong>DM me for more info or if you're nervous about joining.</strong></p>
-      <a href="mailto:me@kevself.com" class="btn">Email Me</a>
+    </div>
+  </section>
+  
+  <section class="final-cta">
+    <div class="container">
+      <h2>Ready to join us?</h2>
       <a href="https://wa.me/447867474853" class="btn">WhatsApp Me</a>
     </div>
   </section>
