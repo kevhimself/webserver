@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Good Run Project</title>
+  <style>
+    :root {
+      --yellow: #f5da58;
+      --charcoal: #323232;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: serif;
+      line-height: 1.6;
+      color: var(--charcoal);
+    }
+    
+    header {
+      background-color: var(--yellow);
+      padding: 2rem 0;
+      text-align: center;
+    }
+    
+    .logo {
+      max-width: 400px;
+      width: 100%;
+      height: auto;
+      margin-bottom: 1rem;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    h1, h2, h3 {
+      font-family: sans-serif;
+      color: var(--charcoal);
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    h2 {
+      font-size: 1.8rem;
+      margin: 2rem 0 1rem;
+    }
+    
+    p {
+      margin-bottom: 1.5rem;
+    }
+    
+    em {
+      font-style: italic;
+    }
+    
+    strong {
+      font-weight: bold;
+    }
+    
+    .intro {
+      padding: 3rem 0;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+    
+    .section {
+      padding: 2rem 0;
+    }
+    
+    .section:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    
+    .checklist li {
+      list-style: none;
+      margin-bottom: 0.8rem;
+      position: relative;
+      padding-left: 2rem;
+    }
+    
+    .checklist li:before {
+      content: "✅";
+      position: absolute;
+      left: 0;
+    }
+    
+    .features li {
+      list-style: none;
+      margin-bottom: 0.8rem;
+      position: relative;
+      padding-left: 2rem;
+    }
+    
+    .features li:before {
+      content: "🏃‍♂️";
+      position: absolute;
+      left: 0;
+    }
+    
+    .features li:nth-child(2):before {
+      content: "🎙";
+    }
+    
+    .features li:nth-child(3):before {
+      content: "☕";
+    }
+    
+    .details li {
+      list-style: none;
+      margin-bottom: 0.8rem;
+      position: relative;
+      padding-left: 2rem;
+    }
+    
+    .details li:before {
+      content: "📍";
+      position: absolute;
+      left: 0;
+    }
+    
+    .details li:nth-child(2):before {
+      content: "⏰";
+    }
+    
+    .details li:nth-child(3):before {
+      content: "☕";
+    }
+    
+    .cta {
+      background-color: var(--yellow);
+      padding: 3rem 0;
+      text-align: center;
+      margin-top: 2rem;
+    }
+    
+    .btn {
+      display: inline-block;
+      background-color: var(--charcoal);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-family: sans-serif;
+      font-weight: bold;
+      margin: 1rem 0.5rem;
+      transition: transform 0.2s;
+    }
+    
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+    
+    .author {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    @media (min-width: 768px) {
+      .author {
+        flex-direction: row;
+        text-align: left;
+      }
+    }
+    
+    .author-text {
+      flex: 2;
+    }
+    
+    footer {
+      background-color: var(--charcoal);
+      color: white;
+      text-align: center;
+      padding: 2rem 0;
+      margin-top: 2rem;
+    }
+    
+    footer a {
+      color: var(--yellow);
+      text-decoration: none;
+    }
+    
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+      
+      h2 {
+        font-size: 1.5rem;
+      }
+      
+      .container {
+        padding: 0 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <img src="the_good_run_project_logo.png" alt="The Good Run Project Logo" class="logo">
+      <h1>The Good Run Project</h1>
+      <p><em>A new kind of 'run' club in Godalming</em></p>
+    </div>
+  </header>
+  
+  <section class="intro">
+    <div class="container">
+      <p>This isn't about 'splits' or 'Strava segments'. Yes, we run, but really—we're here for the conversation.</p>
+      <p>Because life is shifting. Work is shifting. The world is shifting. And many of us are feeling it—that pull to do things differently, to live and work more meaningfully, to connect more deeply to ourselves, this community, and the land beneath our feet.</p>
+      <p>This run is for <strong>good humans who believe in better</strong>—whatever that means for you.</p>
+    </div>
+  </section>
+  
+  <section class="section">
+    <div class="container">
+      <h2>Who is this for?</h2>
+      <p>You'll probably like this if you:</p>
+      <ul class="checklist">
+        <li>Enjoy running (and can cover 10K on trails & roads—not always fast, not always competitive, just steady movement. And yes, you can walk up the hills)</li>
+        <li>Feel like life is about more than being busy, and want to explore what that "more" is</li>
+        <li>Want to meet good people who think about life, work, and the world differently</li>
+        <li>Are making (or want to make) your work more meaningful—parents reimagining life, business owners, founders or creators, anyone in transition..</li>
+        <li>Are less about pace, more about presence</li>
+        <li>Like the idea of moving your body while moving your thinking</li>
+      </ul>
+    </div>
+  </section>
+  
+  <section class="section">
+    <div class="container">
+      <h2>What is it?</h2>
+      <ul class="features">
+        <li><strong>A 10K-ish run</strong> (we go at the pace of the slowest—and yes, hills can be walked)</li>
+        <li><strong>We start with a check-in and a theme for the run</strong>—then let the conversation flow</li>
+        <li><strong>Post-run coffee at The Antiques Pantry</strong></li>
+      </ul>
+      <p>No pressure, no egos—just <strong>good movement, good conversations, good humans.</strong></p>
+    </div>
+  </section>
+  
+  <section class="section">
+    <div class="container">
+      <h2>When & Where?</h2>
+      <ul class="details">
+        <li><strong>Godalming – Meet at The Pepperpot</strong></li>
+        <li><strong>Wednesdays, 6:45–8:15 AM (1 - 1.5 hrs)</strong></li>
+        <li><strong>Post-run coffee at The Antiques Pantry</strong></li>
+      </ul>
+      <p>It's <strong>free</strong>—your time and attention is your commitment, just show up 😌 Or DM me first if you're feeling unsure.</p>
+    </div>
+  </section>
+  
+  <section class="section">
+    <div class="container">
+      <h2>Who's behind this?</h2>
+      <div class="author">
+        <div class="author-text">
+          <p>I'm <strong>Kev</strong>—a Dad, coach and business mentor based in Godalming. I believe in living life another way. I work with people navigating change and finding their place and direction in this wild world. The people I coach are rethinking work and life, stepping into something new, or creating businesses that feel more <em>them.</em></p>
+          <p>🔗 <strong>Find out more about my work at</strong> <a href="http://www.kevself.com" target="_blank">www.kevself.com</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="cta">
+    <div class="container">
+      <h2>Curious?</h2>
+      <p>Come along. Bring an open heart. See if it fills you up a little more.</p>
+      <p>💬 <strong>DM me for more info or if you're nervous about joining.</strong></p>
+      <a href="mailto:me@kevself.com" class="btn">Email Me</a>
+      <a href="https://wa.me/447867474853" class="btn">WhatsApp Me</a>
+    </div>
+  </section>
+  
+  <footer>
+    <div class="container">
+      <p>© 2025 The Good Run Project | <a href="http://www.kevself.com" target="_blank">www.kevself.com</a></p>
+    </div>
+  </footer>
+</body>
+</html>
