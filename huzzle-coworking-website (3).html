@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huzzle - Cozy Online Co-Working That Works</title>
+    <style>
+        :root {
+            --primary-color: #f5da58;
+            --highlight-color: #323232;
+            --text-color: #333;
+            --light-bg: #fafafa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: serif;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: sans-serif;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            padding: 1rem 0;
+            text-align: center;
+        }
+        
+        .logo {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 1rem 0;
+        }
+        
+        .hero {
+            background-color: var(--primary-color);
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        section {
+            padding: 3rem 0;
+        }
+        
+        section:nth-child(even) {
+            background-color: var(--light-bg);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-list li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .feature-list li:before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+        }
+        
+        .session-info {
+            margin-bottom: 2rem;
+        }
+        
+        .session-flow {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+        
+        .session-step {
+            flex: 0 0 calc(20% - 1rem);
+            margin-bottom: 1rem;
+            text-align: center;
+            padding: 1rem;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .session-step {
+                flex: 0 0 100%;
+            }
+        }
+        
+        .pricing-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .pricing-option {
+            flex: 0 0 calc(50% - 1rem);
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .pricing-option {
+                flex: 0 0 100%;
+                margin-bottom: 1rem;
+            }
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--highlight-color);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: var(--primary-color);
+            color: var(--highlight-color);
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .signup-form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        footer {
+            background-color: var(--highlight-color);
+            color: #fff;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        footer a {
+            color: var(--primary-color);
+        }
+        
+        .hosts {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .host-profile {
+            flex: 0 0 calc(50% - 2rem);
+            text-align: center;
+            padding: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .host-profile {
+                flex: 0 0 100%;
+            }
+        }
+        
+        .host-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+        }
+        
+        em {
+            font-style: italic;
+        }
+        
+        strong {
+            font-weight: bold;
+        }
+        
+        .calendar-btn {
+            margin: 1rem 0;
+        }
+        
+        .whatsapp-invite {
+            text-align: center;
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="huzzle_logo.png" alt="Huzzle Logo" width="400">
+            </div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Welcome to Huzzle: Cozy Online Co-Working That Works</h1>
+            <p>Get things done, feel connected, and actually enjoy work.</p>
+        </div>
+    </section>
+    
+    <section>
+        <div class="container">
+            <h2 class="section-title">What is a Huzzle?</h2>
+            <p>A Huzzle is online co-working with a human touch. It's a space where you can bring your own work, stay accountable, and connect with others—whether it's tackling that admin task, making progress on a big project, or just getting unstuck. Think of it as the perfect blend of <strong>focus, structure, and friendly support.</strong></p>
+            
+            <h2 class="section-title">Why Join a Huzzle?</h2>
+            <ul class="feature-list">
+                <li>Feel motivated and accountable—without the pressure</li>
+                <li>Work alongside others who <em>get it</em> (solopreneurs, remote workers, creatives)</li>
+                <li>Have the option to check in, get support, or just quietly focus</li>
+                <li>Make it a weekly habit to <em>actually</em> get shit done</li>
+            </ul>
+        </div>
+    </section>
+    
+    <section>
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="session-info">
+                <p><strong>📅 Weekly Sessions:</strong></p>
+                <ul>
+                    <li><strong>Wednesdays</strong> 1pm - 4pm UK | <em>8am-11am US Eastern | 5am-8am US Pacific</em></li>
+                    <li><strong>Thursdays</strong> 9am - 11:30am UK | <em>8pm-10:30pm Australia | 10pm-12:30am NZ</em></li>
+                </ul>
+                <p><strong>🖥️ Where:</strong> Zoom</p>
+                <p><strong>⏳ Duration:</strong> 2.5 - 3 hours</p>
+                <p><strong>📷 Cams on:</strong> This is a presence-based space</p>
+                <p><strong>💸 Price:</strong> Flexible pricing options below</p>
+                
+                <div class="calendar-btn">
+                    <a href="#" class="btn btn-secondary" onclick="addToGoogleCalendar()">📅 Add to Google Calendar</a>
+                </div>
+            </div>
+            
+            <h2 class="section-title">Session Flow</h2>
+            <div class="session-flow">
+                <div class="session-step">
+                    <h3>1️⃣ Check-in</h3>
+                    <p>Set your intention & share what you're working on</p>
+                </div>
+                <div class="session-step">
+                    <h3>2️⃣ Work Block</h3>
+                    <p>Focus time (optional breakout rooms for support)</p>
+                </div>
+                <div class="session-step">
+                    <h3>3️⃣ Midpoint Check-in</h3>
+                    <p>(optional) – Share successes or needs</p>
+                </div>
+                <div class="session-step">
+                    <h3>4️⃣ Work Block</h3>
+                    <p>Stay in flow, use breakouts as needed</p>
+                </div>
+                <div class="session-step">
+                    <h3>5️⃣ Check-out</h3>
+                    <p>Reflect on what got done (or what didn't, and why)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <div class="container">
+            <h2 class="section-title">Choose Your Commitment</h2>
+            <div class="pricing-options">
+                <div class="pricing-option">
+                    <h3>💡 FLEXY WORK – Pay-What-You-Want</h3>
+                    <p>Join a session & contribute as you feel</p>
+                    <a href="https://buymeacoffee.com/kevself" class="btn btn-secondary">☕ Buy Me a Coffee</a>
+                </div>
+                <div class="pricing-option">
+                    <h3>🔥 GOOD WORK – Unlimited Sessions</h3>
+                    <p>Join as many sessions as you want each month!</p>
+                    <p><strong>£55 Monthly</strong></p>
+                    <a href="https://buy.stripe.com/aEU3eL2mi8OO2CQ288" class="btn">Pay £55 Monthly</a>
+                    <a href="https://buy.stripe.com/8wM9D9bWSd544KY4gh" class="btn">Subscribe for £49/month</a>
+                </div>
+            </div>
+            <p style="text-align: center;"><strong>Your contributions help keep the Huzzle alive & thriving.</strong> 🙌</p>
+        </div>
+    </section>
+    
+    <section>
+        <div class="container">
+            <h2 class="section-title">Sign Up & Join Us!</h2>
+            <div class="whatsapp-invite">
+                <h3>Join our WhatsApp group to stay updated:</h3>
+                <a href="https://chat.whatsapp.com/Kl1I8hP4PuCBKlL53n3XNv" class="btn">Join WhatsApp Group</a>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <div class="container">
+            <h2 class="section-title">Meet Your Hosts</h2>
+            <div class="hosts">
+                <div class="host-profile">
+                    <img src="Kev_Self wizz.jpeg" alt="Kev Self" class="host-image">
+                    <h3><strong>Kev Self</strong></h3>
+                    <p>Founder, Guide & Catalyst</p>
+                    <p>Kevin weaves together design thinking, innovation, spiritual wisdom, and practical strategy to help people step into their most alive work. He's walked the path of reinvention and knows the power of creating in collaboration with others. Expect a mix of gentle challenge, deep wisdom, and a bit of mischief.</p>
+                    <p>Find out more about Kev: <a href="http://www.kevself.com">www.kevself.com</a></p>
+                </div>
+                <div class="host-profile">
+                    <img src="Mari_Budlong.jpg" alt="Mari Budlong" class="host-image">
+                    <h3><strong>Mari Burlong</strong></h3>
+                    <p>Momentum Coach</p>
+                    <p>Mari is a momentum coach who reframes accountability by focusing on intrinsic rewards and the joy of spreading goodness. She believes in building momentum through engaging metaphors, such as learning to swing or building a snowman, emphasizing the importance of sense-making, meaning-making, and choice-making.</p>
+                    <p>Find out more about Mari: <a href="http://www.reenchantingmoments.com">www.reenchantingmoments.com</a></p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <h3>Have Questions?</h3>
+                <a href="mailto:me@kevself.com" class="btn">Email Me</a>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>© 2025 Huzzle. All rights reserved.</p>
+            <p><a href="https://buymeacoffee.com/kevself">Support Kev</a> | <a href="https://calendly.com/kevinself/50-minute-dicovery-with-kev">Book a Call</a></p>
+        </div>
+    </footer>
+
+    <script>
+        function addToGoogleCalendar() {
+            // Get the next Wednesday or Thursday
+            const now = new Date();
+            let wed = new Date();
+            wed.setDate(now.getDate() + ((3 - now.getDay() + 7) % 7));
+            wed.setHours(13, 0, 0); // 1pm UK
+            
+            let thu = new Date();
+            thu.setDate(now.getDate() + ((4 - now.getDay() + 7) % 7));
+            thu.setHours(9, 0, 0); // 9am UK
+            
+            // Choose the next upcoming session
+            let nextSession;
+            if (wed < thu) {
+                nextSession = wed;
+                var title = "Huzzle Co-Working - Wednesday Session";
+                var endTime = new Date(nextSession);
+                endTime.setHours(16, 0, 0); // 4pm UK
+            } else {
+                nextSession = thu;
+                var title = "Huzzle Co-Working - Thursday Session";
+                var endTime = new Date(nextSession);
+                endTime.setHours(11, 30, 0); // 11:30am UK
+            }
+            
+            // Format dates for Google Calendar
+            const startDate = nextSession.toISOString().replace(/-|:|\.\d+/g, '');
+            const endDate = endTime.toISOString().replace(/-|:|\.\d+/g, '');
+            
+            // Create Google Calendar URL
+            const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate}/${endDate}&details=${encodeURIComponent("Huzzle online co-working session. Join Zoom meeting link provided in the invitation.")}`;
+            
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
