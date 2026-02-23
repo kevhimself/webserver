@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kev Self | Future of Work &amp; Life</title>
+    <meta name="description" content="Kev Self helps soul-preneurs and leaders navigate the future of work and life with innovation, adaptability, and meaningful impact.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --yellow:      #f5da58;
+            --yellow-dark: #c8a800;
+            --dark:        #1a1a1a;
+            --darker:      #0d0d0d;
+            --surface:     #141414;
+            --mid:         #2e2e2e;
+            --light:       #fafaf8;
+            --cream:       #f4f1e8;
+            --muted:       #6b6b6b;
+            --border:      #e6e2d8;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--dark);
+            background: var(--light);
+            overflow-x: hidden;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ─── NAVIGATION ─────────────────────────────── */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.35s ease, padding 0.35s ease, box-shadow 0.35s ease;
+        }
+        .nav.scrolled {
+            background: rgba(13, 13, 13, 0.96);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 1rem 2rem;
+            box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+        }
+        .nav-logo {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: -0.04em;
+        }
+        .nav-logo span { color: var(--yellow); }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+        .nav-links a {
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: #fff; }
+        .nav-cta {
+            background: var(--yellow) !important;
+            color: var(--dark) !important;
+            padding: 0.55rem 1.35rem !important;
+            border-radius: 50px;
+            font-weight: 700 !important;
+            font-size: 0.85rem !important;
+            transition: opacity 0.2s, transform 0.2s !important;
+        }
+        .nav-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+            position: relative;
+            z-index: 1001;
+        }
+        .nav-toggle span {
+            display: block;
+            width: 24px; height: 2px;
+            background: #fff;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+        .nav-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .nav-toggle.open span:nth-child(2) { opacity: 0; }
+        .nav-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        /* ─── HERO ───────────────────────────────────── */
+        .hero {
+            min-height: 100vh;
+            background: var(--darker);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-glow {
+            position: absolute; inset: 0; pointer-events: none;
+            background:
+                radial-gradient(ellipse 80% 80% at 75% 40%, rgba(245,218,88,0.13) 0%, transparent 55%),
+                radial-gradient(ellipse 60% 60% at 15% 75%, rgba(245,218,88,0.06) 0%, transparent 50%);
+        }
+        .hero-grid {
+            position: absolute; inset: 0; pointer-events: none;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+            background-size: 64px 64px;
+        }
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 9rem 2rem 5rem;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 5rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(245,218,88,0.12);
+            border: 1px solid rgba(245,218,88,0.28);
+            color: var(--yellow);
+            padding: 0.38rem 1rem;
+            border-radius: 50px;
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1.75rem;
+        }
+        .hero-eyebrow::before {
+            content: '';
+            display: block;
+            width: 6px; height: 6px;
+            background: var(--yellow);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50%       { opacity: 0.4; transform: scale(0.7); }
+        }
+        .hero-title {
+            font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.05;
+            letter-spacing: -0.05em;
+            margin-bottom: 1.5rem;
+        }
+        .hero-title .accent { color: var(--yellow); }
+        .hero-body {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.8;
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            max-width: 520px;
+        }
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 3.5rem;
+        }
+        .btn-primary {
+            background: var(--yellow);
+            color: var(--dark);
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.22s;
+            border: 2px solid var(--yellow);
+        }
+        .btn-primary:hover {
+            background: #fff;
+            border-color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(245,218,88,0.25);
+        }
+        .btn-ghost {
+            border: 2px solid rgba(255,255,255,0.22);
+            color: rgba(255,255,255,0.85);
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.22s;
+        }
+        .btn-ghost:hover {
+            border-color: var(--yellow);
+            color: var(--yellow);
+        }
+        .hero-stats {
+            display: flex;
+            gap: 2.5rem;
+        }
+        .hero-stat { border-left: 2px solid var(--yellow); padding-left: 1rem; }
+        .hero-stat-num {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #fff;
+            line-height: 1;
+            letter-spacing: -0.04em;
+        }
+        .hero-stat-label {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.45);
+            margin-top: 0.2rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+
+        /* Photo column */
+        .hero-photo-col { position: relative; }
+        .hero-photo-frame {
+            position: absolute;
+            inset: -16px;
+            border: 1.5px solid rgba(245,218,88,0.25);
+            border-radius: 22px;
+        }
+        .hero-photo {
+            width: 100%;
+            max-width: 420px;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            object-position: top;
+            border-radius: 18px;
+            display: block;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-badge {
+            position: absolute;
+            bottom: -20px; left: -20px;
+            background: var(--yellow);
+            color: var(--dark);
+            padding: 1rem 1.25rem;
+            border-radius: 14px;
+            z-index: 2;
+            box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+            max-width: 200px;
+        }
+        .hero-badge-title {
+            font-weight: 800;
+            font-size: 0.82rem;
+            line-height: 1.3;
+        }
+        .hero-badge-sub {
+            font-size: 0.72rem;
+            opacity: 0.65;
+            margin-top: 0.2rem;
+        }
+
+        /* ─── SHARED LAYOUT ──────────────────────────── */
+        .section { padding: 6rem 2rem; }
+        .section-sm { padding: 4.5rem 2rem; }
+        .container    { max-width: 1200px; margin: 0 auto; }
+        .container-sm { max-width: 820px;  margin: 0 auto; }
+        .section-label {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--yellow-dark);
+            margin-bottom: 0.75rem;
+        }
+        .section-label-light {
+            color: rgba(245,218,88,0.7);
+        }
+        .section-title {
+            font-size: clamp(1.85rem, 3.5vw, 2.75rem);
+            font-weight: 900;
+            line-height: 1.15;
+            letter-spacing: -0.04em;
+            margin-bottom: 1rem;
+        }
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--muted);
+            line-height: 1.75;
+            max-width: 580px;
+        }
+        .section-header { margin-bottom: 3rem; }
+
+        /* ─── PAIN POINTS ────────────────────────────── */
+        .pain-section { background: var(--dark); color: #fff; }
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin-top: 3rem;
+        }
+        .pain-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px;
+            padding: 1.75rem;
+            transition: transform 0.28s, border-color 0.28s, background 0.28s;
+        }
+        .pain-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(245,218,88,0.35);
+            background: rgba(245,218,88,0.05);
+        }
+        .pain-card.highlight {
+            background: rgba(245,218,88,0.08);
+            border-color: rgba(245,218,88,0.3);
+        }
+        .pain-icon {
+            font-size: 1.6rem;
+            margin-bottom: 0.85rem;
+            display: block;
+        }
+        .pain-text {
+            font-size: 0.93rem;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.65;
+        }
+        .pain-text.golden {
+            color: rgba(245,218,88,0.85);
+            font-style: italic;
+        }
+
+        /* ─── ABOUT ──────────────────────────────────── */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: 5rem;
+            align-items: center;
+        }
+        .about-img-wrap { position: relative; }
+        .about-img {
+            width: 100%;
+            border-radius: 18px;
+            object-fit: cover;
+            object-position: top;
+            aspect-ratio: 4/5;
+            display: block;
+        }
+        .about-pull-quote {
+            position: absolute;
+            bottom: -24px; right: -24px;
+            background: var(--yellow);
+            color: var(--dark);
+            padding: 1.35rem 1.5rem;
+            border-radius: 14px;
+            max-width: 210px;
+            font-weight: 800;
+            font-size: 0.83rem;
+            line-height: 1.45;
+            box-shadow: 0 16px 40px rgba(0,0,0,0.14);
+        }
+        .credentials { list-style: none; display: flex; flex-direction: column; gap: 1.1rem; margin-top: 2rem; }
+        .credential {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            font-size: 0.93rem;
+            line-height: 1.6;
+        }
+        .credential-dot {
+            width: 7px; height: 7px;
+            min-width: 7px;
+            background: var(--yellow-dark);
+            border-radius: 50%;
+            margin-top: 7px;
+        }
+
+        /* ─── WHY DIFFERENT ──────────────────────────── */
+        .diff-section { background: var(--cream); }
+        .diff-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        .diff-card {
+            background: #fff;
+            border-radius: 18px;
+            padding: 2rem;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+            transition: transform 0.28s, box-shadow 0.28s;
+        }
+        .diff-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.09);
+        }
+        .diff-card.dark-card {
+            background: var(--dark);
+            color: #fff;
+        }
+        .diff-num {
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: -0.06em;
+            color: rgba(200,168,0,0.2);
+            line-height: 1;
+            margin-bottom: 0.75rem;
+        }
+        .diff-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+        }
+        .diff-text {
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+        .diff-card.dark-card .diff-text {
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* ─── SERVICES ───────────────────────────────── */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.75rem;
+            margin-top: 3rem;
+        }
+        .service-card {
+            border-radius: 22px;
+            padding: 2.5rem;
+            border: 1.5px solid var(--border);
+            background: #fff;
+            transition: transform 0.28s, box-shadow 0.28s, border-color 0.28s;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+            border-color: var(--yellow-dark);
+        }
+        .service-card.dark {
+            background: var(--dark);
+            border-color: var(--yellow);
+            color: #fff;
+        }
+        .service-card.dark:hover { border-color: #fff; }
+        .service-chip {
+            display: inline-block;
+            background: var(--yellow);
+            color: var(--dark);
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            padding: 0.28rem 0.8rem;
+            border-radius: 50px;
+            margin-bottom: 1.25rem;
+        }
+        .service-title {
+            font-size: 1.65rem;
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.35rem;
+        }
+        .service-sub {
+            font-size: 0.88rem;
+            opacity: 0.55;
+            font-style: italic;
+            margin-bottom: 1.1rem;
+        }
+        .service-desc {
+            font-size: 0.93rem;
+            line-height: 1.75;
+            opacity: 0.8;
+        }
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-weight: 700;
+            font-size: 0.88rem;
+            color: var(--yellow-dark);
+            text-decoration: none;
+            margin-top: 1.5rem;
+            transition: gap 0.2s;
+        }
+        .service-card.dark .service-link { color: var(--yellow); }
+        .service-link:hover { gap: 0.75rem; }
+        .arrow { display: inline-block; transition: transform 0.2s; }
+        .service-link:hover .arrow { transform: translateX(4px); }
+
+        /* ─── COURSE ─────────────────────────────────── */
+        .course-section { background: var(--dark); }
+        .course-card {
+            background: rgba(255,255,255,0.04);
+            border: 1.5px solid rgba(245,218,88,0.25);
+            border-radius: 24px;
+            padding: 3rem;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 3.5rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+        .course-list { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
+        .course-item {
+            display: flex;
+            gap: 0.85rem;
+            font-size: 0.93rem;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.5;
+        }
+        .check { color: var(--yellow); font-weight: 800; flex-shrink: 0; }
+        .price-box {
+            background: rgba(245,218,88,0.07);
+            border: 1px solid rgba(245,218,88,0.2);
+            border-radius: 18px;
+            padding: 2.25rem;
+            text-align: center;
+        }
+        .price {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--yellow);
+            letter-spacing: -0.06em;
+            line-height: 1;
+        }
+        .price-note {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.4);
+            margin-top: 0.3rem;
+            margin-bottom: 2rem;
+        }
+        .btn-primary-full {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--yellow);
+            color: var(--dark);
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.22s;
+            border: 2px solid var(--yellow);
+        }
+        .btn-primary-full:hover {
+            background: #fff;
+            border-color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(245,218,88,0.2);
+        }
+
+        /* ─── WHO I WORK WITH ────────────────────────── */
+        .who-section { background: var(--light); }
+        .who-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.1rem;
+            margin-top: 2.5rem;
+        }
+        .who-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.9rem;
+            padding: 1.25rem 1.35rem;
+            background: #fff;
+            border-radius: 12px;
+            border: 1.5px solid var(--border);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .who-item:hover {
+            border-color: var(--yellow-dark);
+            box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+        }
+        .who-item.cta-item {
+            background: #fffce8;
+            border-color: var(--yellow-dark);
+        }
+        .who-check {
+            width: 22px; height: 22px;
+            min-width: 22px;
+            background: var(--yellow);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 900;
+            color: var(--dark);
+            margin-top: 1px;
+        }
+        .who-text { font-size: 0.92rem; line-height: 1.55; color: var(--dark); }
+        .who-text a { color: var(--yellow-dark); font-weight: 700; text-decoration: none; }
+        .who-text a:hover { text-decoration: underline; }
+
+        /* ─── VALUES ─────────────────────────────────── */
+        .values-section { background: var(--surface); }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        .value-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: border-color 0.28s, background 0.28s;
+        }
+        .value-card:hover {
+            border-color: rgba(245,218,88,0.3);
+            background: rgba(245,218,88,0.04);
+        }
+        .value-name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--yellow);
+            margin-bottom: 0.6rem;
+        }
+        .value-desc {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.58);
+            line-height: 1.72;
+        }
+
+        /* ─── FINAL CTA ──────────────────────────────── */
+        .cta-section {
+            background: var(--yellow);
+            padding: 7rem 2rem;
+            text-align: center;
+        }
+        .cta-title {
+            font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+            font-weight: 900;
+            color: var(--dark);
+            letter-spacing: -0.05em;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+        .cta-sub {
+            font-size: 1.05rem;
+            color: rgba(26,26,26,0.65);
+            margin-bottom: 2.75rem;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+        .btn-dark {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--dark);
+            color: #fff;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.22s;
+        }
+        .btn-dark:hover {
+            background: #000;
+            transform: translateY(-2px);
+            box-shadow: 0 14px 36px rgba(0,0,0,0.22);
+        }
+
+        /* ─── FOOTER ─────────────────────────────────── */
+        .footer {
+            background: var(--darker);
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.35);
+        }
+        .footer a { color: rgba(245,218,88,0.7); text-decoration: none; transition: color 0.2s; }
+        .footer a:hover { color: var(--yellow); }
+
+        /* ─── SCROLL ANIMATIONS ──────────────────────── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.55s ease, transform 0.55s ease;
+        }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* ─── RESPONSIVE ─────────────────────────────── */
+        @media (max-width: 900px) {
+            .hero-content       { grid-template-columns: 1fr; gap: 3rem; }
+            .hero-photo-col     { order: -1; display: flex; justify-content: center; }
+            .hero-photo         { max-width: 300px; }
+            .hero-badge         { bottom: -16px; left: 0; }
+            .about-grid         { grid-template-columns: 1fr; gap: 3rem; }
+            .about-pull-quote   { position: static; margin-top: 1rem; max-width: 100%; }
+            .diff-grid          { grid-template-columns: repeat(2, 1fr); }
+            .pain-grid          { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 640px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background: rgba(13,13,13,0.98);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                z-index: 999;
+            }
+            .nav-links.open   { display: flex; }
+            .nav-links a      { font-size: 1.2rem; }
+            .nav-cta          { font-size: 1rem !important; padding: 0.65rem 1.75rem !important; }
+            .nav-toggle       { display: flex; }
+            .diff-grid        { grid-template-columns: 1fr; }
+            .pain-grid        { grid-template-columns: 1fr; }
+            .services-grid    { grid-template-columns: 1fr; }
+            .course-card      { grid-template-columns: 1fr; }
+            .who-grid         { grid-template-columns: 1fr; }
+            .values-grid      { grid-template-columns: 1fr; }
+            .hero-stats       { gap: 1.5rem; }
+            .section          { padding: 4.5rem 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ══ NAVIGATION ══════════════════════════════ -->
+    <nav class="nav" id="navbar">
+        <a href="#home" class="nav-logo">Kev <span>Self</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#course">Course</a></li>
+            <li><a href="#values">Values</a></li>
+            <li>
+                <a href="https://calendly.com/kevinself/50-minute-dicovery-with-kev"
+                   target="_blank" rel="noopener" class="nav-cta">Book a Call</a>
+            </li>
+        </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- ══ HERO ════════════════════════════════════ -->
+    <header id="home" class="hero">
+        <div class="hero-glow"></div>
+        <div class="hero-grid"></div>
+        <div class="hero-content">
+            <div>
+                <span class="hero-eyebrow">Future of Work &amp; Life</span>
+                <h1 class="hero-title">
+                    Lead. Adapt.<br>
+                    <span class="accent">Innovate.</span>
+                </h1>
+                <p class="hero-body">
+                    You're not just building a business—you're shaping the future. I help
+                    soul-preneurs and leaders navigate the space between where they are and
+                    where they want to be, with innovation, adaptability, and meaningful
+                    impact at the core.
+                </p>
+                <div class="hero-actions">
+                    <a href="https://calendly.com/kevinself/50-minute-dicovery-with-kev"
+                       target="_blank" rel="noopener" class="btn-primary">
+                        Book a Discovery Call <span class="arrow">→</span>
+                    </a>
+                    <a href="#about" class="btn-ghost">Learn More</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="hero-stat-num">20+</div>
+                        <div class="hero-stat-label">Years at IBM</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-num">100s</div>
+                        <div class="hero-stat-label">Leaders Guided</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-num">1</div>
+                        <div class="hero-stat-label">Authentic You</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-photo-col">
+                <div class="hero-photo-frame"></div>
+                <img src="Kev_Self wizz.jpeg" alt="Kev Self – coach, innovator, strategist"
+                     class="hero-photo">
+                <div class="hero-badge">
+                    <div class="hero-badge-title">Very Human School of AI</div>
+                    <div class="hero-badge-sub">Founder &amp; Innovator</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ══ PAIN POINTS ══════════════════════════════ -->
+    <section class="section pain-section" id="challenges">
+        <div class="container">
+            <div class="section-header fade-up">
+                <span class="section-label section-label-light">Sound familiar?</span>
+                <h2 class="section-title" style="color:#fff">The challenges you're facing right now</h2>
+                <p class="section-subtitle" style="color:rgba(255,255,255,0.55)">You're not alone. These are the moments that call for a different kind of guidance.</p>
+            </div>
+            <div class="pain-grid">
+                <div class="pain-card fade-up">
+                    <span class="pain-icon">🧭</span>
+                    <p class="pain-text">You have a vision but don't know where to start—or which direction to move first.</p>
+                </div>
+                <div class="pain-card fade-up">
+                    <span class="pain-icon">⚡</span>
+                    <p class="pain-text">You're losing focus and momentum, stuck in a cycle of planning without progressing.</p>
+                </div>
+                <div class="pain-card fade-up">
+                    <span class="pain-icon">💬</span>
+                    <p class="pain-text">You struggle to find the right words to share your work in a way that truly lands.</p>
+                </div>
+                <div class="pain-card fade-up">
+                    <span class="pain-icon">🚪</span>
+                    <p class="pain-text">You want to do the work but keep getting stuck on finding and winning the right clients.</p>
+                </div>
+                <div class="pain-card fade-up">
+                    <span class="pain-icon">👁️</span>
+                    <p class="pain-text">You feel unseen in a world of loud voices and overhyped, formulaic strategies.</p>
+                </div>
+                <div class="pain-card highlight fade-up">
+                    <span class="pain-icon">✨</span>
+                    <p class="pain-text golden">This is a safe space to start believing in yourself and bringing your work to the world.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ ABOUT ════════════════════════════════════ -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-img-wrap fade-up">
+                    <img src="Kev_Self wizz.jpeg" alt="Kev Self" class="about-img">
+                    <div class="about-pull-quote">
+                        "I don't follow a script—I help you write yours."
+                    </div>
+                </div>
+                <div class="fade-up">
+                    <span class="section-label">Who I Am</span>
+                    <h2 class="section-title">An innovator, strategist &amp; guide for those ready to evolve</h2>
+                    <p style="font-size:0.95rem;color:var(--muted);line-height:1.75;margin-bottom:0.5rem;">
+                        I'm Kev Self. My background is a rare fusion of business innovation, AI, and deep human
+                        work—bringing you technical rigour and genuine care for the whole person.
+                    </p>
+                    <ul class="credentials">
+                        <li class="credential">
+                            <span class="credential-dot"></span>
+                            <span><strong>20 years at IBM</strong>, pioneering AI-human collaboration and facilitating business transformation at the highest levels.</span>
+                        </li>
+                        <li class="credential">
+                            <span class="credential-dot"></span>
+                            <span><strong>Founder of the Very Human School of AI</strong>—helping humans and AI work together with intelligence and integrity.</span>
+                        </li>
+                        <li class="credential">
+                            <span class="credential-dot"></span>
+                            <span><strong>A decade of deep self-exploration</strong>, weaving wisdom from tech, psychology, and spirituality into a unique approach.</span>
+                        </li>
+                        <li class="credential">
+                            <span class="credential-dot"></span>
+                            <span><strong>Trusted by blue-chip companies</strong> across Government, Sustainability, Finance, Telecoms, and beyond.</span>
+                        </li>
+                        <li class="credential">
+                            <span class="credential-dot"></span>
+                            <span><strong>Now I work with soul-driven entrepreneurs</strong>—coaches, creatives, change-makers—to bring their vision to life.</span>
+                        </li>
+                    </ul>
+                    <a href="https://calendly.com/kevinself/50-minute-dicovery-with-kev"
+                       target="_blank" rel="noopener" class="btn-primary"
+                       style="margin-top:2.25rem;display:inline-flex;">
+                        Let's Talk <span class="arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ WHY DIFFERENT ════════════════════════════ -->
+    <section class="section diff-section">
+        <div class="container">
+            <div class="section-header fade-up">
+                <span class="section-label">Why I'm Different</span>
+                <h2 class="section-title">Not a coach. A thought partner.</h2>
+                <p class="section-subtitle">Most coaches offer rigid frameworks and linear goals. That's not me.</p>
+            </div>
+            <div class="diff-grid">
+                <div class="diff-card fade-up">
+                    <div class="diff-num">01</div>
+                    <div class="diff-title">You write the script</div>
+                    <p class="diff-text">I don't hand you a formula. I help you co-create a path that aligns with who you truly are—because every journey is unique.</p>
+                </div>
+                <div class="diff-card fade-up">
+                    <div class="diff-num">02</div>
+                    <div class="diff-title">Strategy meets soul</div>
+                    <p class="diff-text">This isn't just about business growth. It's about becoming the person you need to be to bring your vision to life.</p>
+                </div>
+                <div class="diff-card fade-up">
+                    <div class="diff-num">03</div>
+                    <div class="diff-title">At the edge of innovation</div>
+                    <p class="diff-text">My experience in AI, human behaviour, and systemic thinking helps you see the opportunities others consistently miss.</p>
+                </div>
+                <div class="diff-card fade-up">
+                    <div class="diff-num">04</div>
+                    <div class="diff-title">Adapt, don't just transform</div>
+                    <p class="diff-text">The world is changing fast. Success comes from evolving in real time, not following outdated formulas from another era.</p>
+                </div>
+                <div class="diff-card fade-up">
+                    <div class="diff-num">05</div>
+                    <div class="diff-title">I walk beside you</div>
+                    <p class="diff-text">I challenge you, co-create with you, and stay with you. Your success isn't a checklist—it's a living, breathing evolution.</p>
+                </div>
+                <div class="diff-card dark-card fade-up">
+                    <p style="color:rgba(255,255,255,0.75);font-style:italic;font-size:0.92rem;line-height:1.75;margin-top:0.5rem;">
+                        "If you want conventional coaching, you've got plenty of options. If you want an innovative,
+                        adaptive, deeply human approach—let's talk."
+                    </p>
+                    <a href="https://calendly.com/kevinself/50-minute-dicovery-with-kev"
+                       target="_blank" rel="noopener" class="btn-primary"
+                       style="margin-top:1.75rem;display:inline-flex;font-size:0.87rem;padding:0.75rem 1.5rem;">
+                        Book a Discovery Call <span class="arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ SERVICES ═════════════════════════════════ -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="section-header fade-up">
+                <span class="section-label">How We Work Together</span>
+                <h2 class="section-title">Choose your path forward</h2>
+                <p class="section-subtitle">From bespoke 1:1 partnership to the energy of group evolution—there's a way to work together that fits exactly where you are.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card dark fade-up">
+                    <span class="service-chip">Most Personal</span>
+                    <h3 class="service-title">1:1 Coaching</h3>
+                    <p class="service-sub">Bespoke Guidance for Visionaries</p>
+                    <p class="service-desc">For founders, leaders, and innovators who need a strategic thought partner and guide. We co-create your next chapter through deep conversation, practical strategy, and real-time adaptation. No templates, no scripts—just genuine co-creation.</p>
+                    <a href="https://calendly.com/kevinself/50-minute-dicovery-with-kev"
+                       target="_blank" rel="noopener" class="service-link">
+                        Book a Discovery Call <span class="arrow">→</span>
+                    </a>
+                </div>
+                <div class="service-card fade-up">
+                    <span class="service-chip">Community</span>
+                    <h3 class="service-title">Group Coaching</h3>
+                    <p class="service-sub">Evolving in Community</p>
+                    <p class="service-desc">Join a cohort of like-minded pioneers navigating business and leadership with experimentation, innovation, and meaningful action. Structured support, dynamic dialogue, and a space to play with new ways of working—together.</p>
+                    <a href="https://calendly.com/kevinself/50-minute-dicovery-with-kev"
+                       target="_blank" rel="noopener" class="service-link">
+                        Find Out More <span class="arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ COURSE ════════════════════════════════════ -->
+    <section class="section course-section" id="course">
+        <div class="container">
+            <div class="section-header fade-up">
+                <span class="section-label section-label-light">Self-Paced Learning</span>
+                <h2 class="section-title" style="color:#fff">The Future of Work &amp; Life Course</h2>
+                <p class="section-subtitle" style="color:rgba(255,255,255,0.55);">
+                    Transform your approach to work and leadership with this comprehensive course
+                    designed for soul-driven entrepreneurs and visionary leaders.
+                </p>
+            </div>
+            <div class="course-card fade-up">
+                <div>
+                    <h3 style="font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:1.5rem;">What's included</h3>
+                    <ul class="course-list">
+                        <li class="course-item"><span class="check">✓</span> 6 weeks of transformative content and practical exercises</li>
+                        <li class="course-item"><span class="check">✓</span> Live group coaching sessions with Kev</li>
+                        <li class="course-item"><span class="check">✓</span> Private community access</li>
+                        <li class="course-item"><span class="check">✓</span> Personalised feedback on your journey</li>
+                        <li class="course-item"><span class="check">✓</span> Lifetime access to all course materials</li>
+                    </ul>
+                </div>
+                <div class="price-box">
+                    <div class="price">£356</div>
+                    <div class="price-note">one-time payment · lifetime access</div>
+                    <a href="https://calendly.com/kevinself/50-minute-dicovery-with-kev"
+                       target="_blank" rel="noopener" class="btn-primary-full">
+                        Enrol Now <span class="arrow">→</span>
+                    </a>
+                    <p style="font-size:0.78rem;color:rgba(255,255,255,0.35);margin-top:1rem;">Questions first? Book a free discovery call.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ WHO I WORK WITH ══════════════════════════ -->
+    <section class="section who-section" id="who">
+        <div class="container">
+            <div class="section-header fade-up">
+                <span class="section-label">Is This For You?</span>
+                <h2 class="section-title">Who I work with</h2>
+                <p class="section-subtitle">I work best with people who are ready to evolve—and genuinely willing to do things differently.</p>
+            </div>
+            <div class="who-grid">
+                <div class="who-item fade-up">
+                    <span class="who-check">✓</span>
+                    <p class="who-text">You know your work is a gift to the world—you just need help bringing it confidently forward.</p>
+                </div>
+                <div class="who-item fade-up">
+                    <span class="who-check">✓</span>
+                    <p class="who-text">You want to build a business that genuinely reflects who you truly are—not a copy of someone else's.</p>
+                </div>
+                <div class="who-item fade-up">
+                    <span class="who-check">✓</span>
+                    <p class="who-text">You're ready to evolve—whether transitioning from corporate life or reimagining your current path.</p>
+                </div>
+                <div class="who-item fade-up">
+                    <span class="who-check">✓</span>
+                    <p class="who-text">You seek guidance beyond conventional coaching—someone who sees both the big picture and the next step.</p>
+                </div>
+                <div class="who-item fade-up">
+                    <span class="who-check">✓</span>
+                    <p class="who-text">You're willing to take action, experiment, and do things that actually feel aligned with who you are.</p>
+                </div>
+                <div class="who-item cta-item fade-up">
+                    <span class="who-check" style="background:var(--dark);color:var(--yellow);">→</span>
+                    <p class="who-text" style="font-weight:600;">
+                        Sound like you? Let's have a conversation.
+                        <a href="https://calendly.com/kevinself/50-minute-dicovery-with-kev"
+                           target="_blank" rel="noopener">Book a free discovery call.</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ VALUES ════════════════════════════════════ -->
+    <section class="section values-section" id="values">
+        <div class="container">
+            <div class="section-header fade-up">
+                <span class="section-label section-label-light">What I Stand For</span>
+                <h2 class="section-title" style="color:#fff;">Values &amp; Approach</h2>
+                <p class="section-subtitle" style="color:rgba(255,255,255,0.5);">The principles that shape every conversation, every session, every co-creation.</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card fade-up">
+                    <div class="value-name">Meaningful, soulful work</div>
+                    <p class="value-desc">Business as an extension of your purpose—not separate from who you are, but a direct and authentic expression of it.</p>
+                </div>
+                <div class="value-card fade-up">
+                    <div class="value-name">Play &amp; experimentation</div>
+                    <p class="value-desc">Iterating, evolving, and refining as you go. The best ideas emerge through action—not overthinking, not perfecting.</p>
+                </div>
+                <div class="value-card fade-up">
+                    <div class="value-name">Being in Alpha</div>
+                    <p class="value-desc">Embracing the 'work in progress' mindset. You don't need to be finished to begin—you need to be in motion.</p>
+                </div>
+                <div class="value-card fade-up">
+                    <div class="value-name">Adapting over transforming</div>
+                    <p class="value-desc">Life and business are fluid. The best leaders flow with change rather than resist it. Adaptability is the real superpower.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ FINAL CTA ════════════════════════════════ -->
+    <section class="cta-section">
+        <div class="container-sm fade-up">
+            <h2 class="cta-title">Ready to step into your future?</h2>
+            <p class="cta-sub">Let's explore your potential and bring your vision to life. Start with a free 50-minute discovery call—no obligations, just an honest conversation.</p>
+            <a href="https://calendly.com/kevinself/50-minute-dicovery-with-kev"
+               target="_blank" rel="noopener" class="btn-dark">
+                Book Your Discovery Call <span class="arrow">→</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ══ FOOTER ════════════════════════════════════ -->
+    <footer class="footer">
+        <p>© 2025 Kev Self | Future of Work &amp; Life ·
+           <a href="https://calendly.com/kevinself/50-minute-dicovery-with-kev"
+              target="_blank" rel="noopener">Book a Call</a>
+        </p>
+    </footer>
+
+    <script>
+        // Sticky nav
+        const navbar = document.getElementById('navbar');
+        const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 60);
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        // Mobile menu
+        const navToggle = document.getElementById('navToggle');
+        const navLinks  = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => {
+            const open = navLinks.classList.toggle('open');
+            navToggle.classList.toggle('open', open);
+        });
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                navToggle.classList.remove('open');
+            });
+        });
+
+        // Scroll-reveal with stagger
+        const fadeEls = document.querySelectorAll('.fade-up');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                const el       = entry.target;
+                const siblings = [...(el.parentElement?.querySelectorAll('.fade-up') ?? [])];
+                const idx      = siblings.indexOf(el);
+                setTimeout(() => el.classList.add('visible'), idx * 75);
+                observer.unobserve(el);
+            });
+        }, { threshold: 0.12 });
+        fadeEls.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
