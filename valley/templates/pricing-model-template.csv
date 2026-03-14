@@ -1,0 +1,33 @@
+SKU,Product Name,Unit of Sale,Category,Supplier,Supplier Cost (ex VAT),Qty in Purchase Unit,Unit Cost (ex VAT),Previous Unit Cost,Cost Change %,Cost Change Flag,Target Margin %,Base Sell Price (ex VAT),Base Sell Price (inc VAT),Rounded Sell Price (inc VAT),Actual Margin %,Margin Flag,Haven Timber Price,Charltons Price,Fountain Forestry Price,B&Q Price,Amazon Price,Avg Competitor Price,Our Price vs Avg %,Competitor Flag,Is Reference Product,Differentiator Notes,Pricing Decision,Pricing Decision Reason,Final Sell Price (inc VAT),Final Margin %,Price Tier (Good/Better/Best),Volume Price (10+),Volume Price (25+),Last Reviewed,Reviewed By
+TIM-SW-T-047-2400,Treated Softwood Batten 47x25mm 2.4m,Each,Timber - Softwood Treated,Valley Timber Supply Co,1.85,1,1.85,1.75,5.7%,REVIEW,35%,2.85,3.42,3.49,47.0%,OK,3.29,3.59,,4.50,,3.79,-7.9%,OK,N,Ours is UC4 treated vs competitor UC3. Thicker section than B&Q equivalent.,Keep,Good margin and below competitor avg,3.49,47.0%,Good,3.29,2.99,2026-03-14,KS
+TIM-SW-T-075-2400,Treated Softwood Post 75x75mm 2.4m,Each,Timber - Softwood Treated,Valley Timber Supply Co,5.40,1,5.40,5.10,5.9%,REVIEW,35%,8.31,9.97,9.99,45.9%,OK,9.49,10.99,,12.00,,10.83,-7.8%,OK,Y - fence post,True 75x75mm section. Competitors often sell 63mm as '3 inch'. UC4 treated.,Keep,Reference product - competitive and good margin,9.99,45.9%,Good,9.49,8.99,2026-03-14,KS
+TIM-SW-T-100-3000,Treated Softwood Post 100x100mm 3.0m,Each,Timber - Softwood Treated,Valley Timber Supply Co,12.50,1,12.50,11.80,5.9%,REVIEW,38%,20.16,24.19,24.99,50.0%,HIGH-CHECK,22.99,26.49,,28.00,,25.83,-3.3%,OK,N,True 100mm. Competitors often undersized at 88-90mm. Structural grade.,Adjust Down,Margin above target - round to customer-friendly number,23.99,47.9%,Good,22.49,20.99,2026-03-14,KS
+TIM-HW-OAK-025-2400,European Oak Board 25x150mm 2.4m,Each,Timber - Hardwood,Surrey Hardwoods,18.50,1,18.50,17.00,8.8%,REVIEW,42%,31.90,38.28,38.99,52.6%,HIGH-CHECK,36.99,42.00,,,44.99,41.33,-5.7%,OK,N,Hand-selected boards. Not pallet-grade. Genuine joinery quality with character.,Keep,Premium product with premium positioning. Quality justifies margin.,38.99,52.6%,Best,,35.99,2026-03-14,KS
+
+COLUMN GUIDE (delete this section when using with real data)
+---
+COST SECTION:
+- Supplier Cost (ex VAT): What appears on the invoice
+- Qty in Purchase Unit: If buying a pack of 10 for £18.50 total then qty=10 and unit cost=£1.85
+- Previous Unit Cost: Last batch cost - for tracking inflation
+- Cost Change %: Auto-calc: (new-old)/old * 100
+- Cost Change Flag: >5% = REVIEW (check if sell price needs updating)
+
+MARGIN SECTION:
+- Target Margin %: From strategy doc margin guidelines by category
+- Base Sell Price (ex VAT): Auto-calc: cost / (1 - target margin)
+- Rounded Sell Price: Human-adjusted to customer-friendly number
+- Actual Margin %: Auto-calc: (sell - cost) / sell * 100
+- Margin Flag: <25% = LOW | 25-55% = OK | >55% = HIGH-CHECK
+
+COMPETITOR SECTION:
+- Track inc VAT prices (what customer sees)
+- Our Price vs Avg %: negative = we are cheaper than average
+- Competitor Flag: >15% above avg = EXPENSIVE | within 15% = OK | below avg = COMPETITIVE
+- Is Reference Product: Y = customers actively price-compare this item (keep sharp)
+
+DECISION SECTION:
+- Pricing Decision: Keep / Adjust Up / Adjust Down / Match Competitor / Loss Leader
+- Final Sell Price: The actual price that goes on the label and into POS
+- Price Tier: Good (entry/value) / Better (mid) / Best (premium)
+- Volume Prices: For trade/bulk buyers
