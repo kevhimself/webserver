@@ -1,0 +1,75 @@
+{
+  "updated": "2026-03-23",
+
+  "week": [
+    { "icon": "📈", "val": "£8,420",  "lbl": "Revenue\nthis week", "tgt": "of £12,500 target",  "col": "amber" },
+    { "icon": "📦", "val": "£200k",   "lbl": "Stock\non site",     "tgt": "£200k held",           "col": "green" },
+    { "icon": "🧑", "val": "3",       "lbl": "New\ncustomers",     "tgt": "5 this week target",   "col": "blue"  }
+  ],
+
+  "goals": [
+    {
+      "icon": "🪵",
+      "name": "Valley Firewood Co",
+      "tag": "Our breakout year for firewood",
+      "current": 31500,
+      "target": 250000,
+      "display": "£31,500 earned so far",
+      "targetLabel": "£250,000 this year",
+      "thresholds": [0.35, 0.65]
+    },
+    {
+      "icon": "🪚",
+      "name": "Hardwood Boards",
+      "tag": "Ramping up — some stock, growing fast",
+      "current": 8200,
+      "target": 60000,
+      "display": "£8,200 earned so far",
+      "targetLabel": "£60,000 this year",
+      "thresholds": [0.30, 0.60]
+    },
+    {
+      "icon": "🏡",
+      "name": "Workshop & Maker Space",
+      "tag": "Pilot year — evenings, courses, open access",
+      "current": 0,
+      "target": 10000,
+      "display": "Not yet launched",
+      "targetLabel": "£5k–£15k pilot target",
+      "thresholds": [0.30, 0.60]
+    },
+    {
+      "icon": "🌱",
+      "name": "Happy Team, Ready Site",
+      "tag": "The ground everything else grows from",
+      "mood": true,
+      "targetLabel": "People first"
+    }
+  ],
+
+  "reach": [
+    { "icon": "✉️",  "plat": "Mailchimp",      "num": "1,178", "lbl": "subscribers",    "sub": "42% open rate",          "dir": "up",   "badge": "+34 this month" },
+    { "icon": "⭐",  "plat": "Google Reviews", "num": "4.7",   "lbl": "star rating",    "sub": "28 reviews total",       "dir": "up",   "badge": "+3" },
+    { "icon": "📸",  "plat": "Instagram",      "num": "612",   "lbl": "followers",      "sub": "4.2% engagement",        "dir": "up",   "badge": "+41" },
+    { "icon": "👥",  "plat": "Facebook",       "num": "1,840", "lbl": "page likes",     "sub": "Avg 180 reach/post",     "dir": "flat", "badge": "— steady" },
+    { "icon": "🧑",  "plat": "New Accounts",   "num": "47",    "lbl": "on the system",  "sub": "since April 2026",       "dir": "up",   "badge": "+7 this month" },
+    { "icon": "🤝",  "plat": "Trade Accounts", "num": "12",    "lbl": "active trades",  "sub": "3 in conversation",      "dir": "up",   "badge": "+2" }
+  ],
+
+  "money": [
+    { "icon": "🏦", "lbl": "Cash in the Bank",  "val": "£250,000", "sub": "£100k held as working reserve",        "dot": "green" },
+    { "icon": "🚀", "lbl": "Ready to Deploy",   "val": "£150,000", "sub": "Available to invest in the business",  "dot": "amber" },
+    { "icon": "📦", "lbl": "Stock on Site",     "val": "£200,000", "sub": "Timber, firewood and boards",           "dot": "green" },
+    { "icon": "📈", "lbl": "Sales This Year",   "val": "£47,200",  "sub": "Building toward our £750k baseline",    "dot": "amber" }
+  ],
+
+  "tasks": [
+    { "lbl": "Workshop space cleared and safe",  "done": false },
+    { "lbl": "Evening access route confirmed",   "done": false },
+    { "lbl": "Online booking system live",       "done": false },
+    { "lbl": "Caspar fully onboarded",           "done": true  },
+    { "lbl": "First newsletter sent",            "done": true  },
+    { "lbl": "Google Workspace live",            "done": true  },
+    { "lbl": "Domain dispute resolved",          "done": true  }
+  ]
+}
