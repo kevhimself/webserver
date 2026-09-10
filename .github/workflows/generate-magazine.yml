@@ -1,0 +1,44 @@
+name: Valley Magazine — Daily Generation
+
+on:
+  schedule:
+    - cron: '0 7 * * *'   # 7am UTC every day
+  workflow_dispatch:       # manual trigger from Actions tab
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Generate issue (if month has changed)
+        run: python3 generate_magazine.py
+        env:
+          CI: 'true'
+
+      - name: Commit and push if a new issue was written
+        run: |
+          git config user.name  "Valley Magazine Bot"
+          git config user.email "noreply@github.com"
+          git add magazines/
+          if git diff --cached --quiet; then
+            echo "No new issue this run — already up to date."
+          else
+            DATE=$(date +%Y-%m-%d)
+            git commit -m "Auto-publish ${DATE} Valley Magazine issue
+
+Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>"
+            git push origin main
+          fi
