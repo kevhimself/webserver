@@ -24,7 +24,7 @@ uplift rather than a nudge to something already happening.
 | **Mar** | Spring turn begins: sheds, deck planning, raised beds | Clocks forward, first dry weekends | The turn is sharp. Be ready before it, not after |
 | **Apr** | Peak build: sheds, decking, garden furniture, raised beds | Easter, bank holidays, first warm spell | Bank holiday weekends are the spike |
 | **May** | Decking, garden furniture, fire pits start | Chelsea, bank holidays, warm evenings | Chelsea sets the year's design language |
-| **Jun** | Garden furniture, decking, fire pits, summer firewood | Longest days, entertaining outdoors | Summer firewood is under-sold. People don't connect logs with fire pits |
+| **Jun** | Garden furniture, decking, fire pits, summer firewood | Longest days, entertaining outdoors | Summer firewood is under-sold. People don't connect firewood with fire pits |
 | **Jul** | Fire pits, summer firewood, garden furniture | Holidays at home, Hampton Court | |
 | **Aug** | Late deck and garden projects, fire pits | Last of the season, bank holiday | Autumn planning content starts landing |
 | **Sep** | Autumn planning, sleepers, raised beds, firewood begins | Back-to-routine, planting planning | The firewood turn starts here, earlier than people expect |
@@ -36,7 +36,7 @@ uplift rather than a nudge to something already happening.
 
 **1. Firewood has two seasons, not one.**
 Winter warmth is obvious. **Summer fire pits are the missed one** — people buying
-logs in June for an evening outside don't think of a timber merchant. That's an
+firewood in June for an evening outside don't think of a timber merchant. That's an
 open goal twice a year.
 
 **2. Fencing follows weather, not the calendar.**

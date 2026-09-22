@@ -31,7 +31,8 @@ config files here, researches the week, and writes the brief into Notion.
 | `config/seasonal-calendar.md` | The demand calendar. Outranks everything else. |
 | `config/shows.md` | The watchlist, weighted to mainstream reach, plus the 60-mile catchment. |
 | `config/social-sources.md` | YouTube, Instagram and the Met Office feed, with their real limits. |
-| `config/signal-map.md` | Moment to Valley product, and the copy rules. |
+| `config/signal-map.md` | Moment to Valley product. |
+| `config/voice.md` | Voice and claims rules, drawn from the Valley Voice Guide. Governs every caption. |
 | `prompts/weekly-brief.md` | What the watcher does each Monday. |
 
 ## Setup — one thing still to do
@@ -97,6 +98,17 @@ you rely on, spend £20 a month there. Don't spend anything on TV data.
   and a Google API key, perhaps an hour of setup each.
 - **Storms are weekly, and shouldn't be.** A Wednesday storm warning is not a
   Monday-brief item. Worth its own alert once the weekly run has settled.
+
+## Flagged for Kev
+
+- **Postcode conflict.** The Voice Guide says Holwell, Frome, Somerset, BA11 3LN.
+  The Software and Tools page says Holwell, Nr Nunney, Frome, BA11 4PZ. The
+  watcher will not put either in copy until this is settled.
+- **The seasonal calendar here may be the "annual marketing calendar" that
+  Marketing & Events lists as drafted elsewhere and needing a home.** Worth
+  reconciling rather than keeping two.
+- **Trend Watch may belong under Marketing & Events** rather than at the root of
+  the hub, next to the unbuilt "Social: who posts, how often, what we post".
 
 ## Still to decide
 

@@ -21,7 +21,11 @@ Read these from `kevhimself/webserver`, branch
 - `config/seasonal-calendar.md` — **read this first, it outranks everything else**
 - `config/shows.md` — the watchlist, weighted to mainstream reach
 - `config/social-sources.md` — YouTube, Instagram and the weather feed
-- `config/signal-map.md` — moment to product, and the copy rules
+- `config/signal-map.md` — moment to product
+- `config/voice.md` — **read before writing a single caption.** Carries the
+  Voice Guide's rules and, critically, the three claims rules: we buy in most of
+  what we sell, we never offer to make or cut what we haven't confirmed, and the
+  workshop and finishing services do not exist yet
 
 ## Step 2 — start with the season, not the telly
 Look up the current month in the seasonal calendar. What should be selling
@@ -62,7 +66,8 @@ Batch queries. Eight to twelve well-chosen searches beat forty scattergun ones.
 2. **Is there a real material moment?** "They built an extension" is not a
    signal. "They clad it in charred larch" is.
 3. **Do we sell it?** Check the signal map. Never tie in on a GAP, especially
-   roof battens.
+   roof battens. A **MACHINE** row is an internal opportunity for Kev, never a
+   public claim that we can make it.
 4. **Is it local, or can we serve it?** National noise we can't supply isn't a
    signal, unless it's slabs or specials, which we ship further.
 
@@ -102,10 +107,13 @@ Say plainly what you could not see rather than padding.
 For the top two or three signals:
 - **The hook** — one line on why anyone cares
 - **The product** — in the customer's words
-- **Draft caption** — postable, 40 to 80 words, Valley's voice: plain,
-  knowledgeable, a working sawmill talking to people who like wood. No prices.
-  No em-dashes. Three or four hashtags at most, including a local one. Never
-  imply a programme endorsed us.
+- **Draft caption** — 40 to 80 words, written the way Garth, Caspar, Garry or
+  Kev would say it at the counter. Say the useful thing first. Demonstrate
+  knowledge, don't announce it. No prices, no em-dashes, no emoji, no
+  romanticising the wood. "firewood" not "logs". Three or four hashtags at most,
+  including a local one. Never imply a programme endorsed us, never imply we
+  milled something we bought in, and never offer to make or cut anything not
+  confirmed. **Label it a draft for human edit before publish.**
 - **The asset** — what photo or video we need, and whether we likely have it
 
 ### The weeks ahead
