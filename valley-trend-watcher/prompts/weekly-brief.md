@@ -1,7 +1,7 @@
 # Weekly Brief — the prompt the watcher runs
 
-This is the instruction the scheduled Monday session executes. Edit this file to
-change what the watcher does; paste the updated text into the Routine's prompt.
+The instruction the scheduled Monday session executes. Edit this file to change
+what the watcher does, then paste the updated text into the Routine's prompt.
 
 ---
 
@@ -12,103 +12,117 @@ demand-signal brief and file it in Notion.
 Check whether Notion tools (`mcp__Notion__*`) are available. If they are **not**,
 do not abandon the run and do not fail silently. Produce the brief exactly as
 described below, but write it to `valley-trend-watcher/briefs/<Monday's date>.md`
-in this repo instead of Notion, commit and push it, and open your reply with one
-line saying Notion was unavailable.
-
-This matters because a Routine created from inside a Claude Code session cannot
-carry connector grants. See the Setup note in the README.
+in this repo instead, commit and push it, and open your reply with one line
+saying Notion was unavailable. See the Setup note in the README.
 
 ## Step 1 — load your context
-Read these two files from the repo `kevhimself/webserver`, branch
+Read these from `kevhimself/webserver`, branch
 `claude/valley-sawmills-trend-watcher-78fufk`:
-- `valley-trend-watcher/config/shows.md` — the watchlist
-- `valley-trend-watcher/config/signal-map.md` — how screen moments map to our
-  products, and the hard rules for suggested copy
+- `config/seasonal-calendar.md` — **read this first, it outranks everything else**
+- `config/shows.md` — the watchlist, weighted to mainstream reach
+- `config/social-sources.md` — YouTube, Instagram and the weather feed
+- `config/signal-map.md` — moment to product, and the copy rules
 
-If you cannot reach the repo, fall back to the watchlist you remember and say
-so in the brief.
+## Step 2 — start with the season, not the telly
+Look up the current month in the seasonal calendar. What should be selling
+anyway? That is the spine of the brief. Everything else either amplifies it or
+is noise.
 
-## Step 2 — research
-Use web search. Direct fetching of TV listing sites and APIs is blocked by the
-network policy in this environment, so search is your instrument. Do not report
-a show as unreachable without having searched for it.
+Then check the weather. A Met Office orange or red wind warning covering the
+South West outranks anything on television, because fencing demand follows it
+within days. If there is one, it leads the brief.
 
-For each Tier 1 show, find:
-- **Airing next week**: date, time, channel and — the bit that matters — what
-  the episode actually features. A synopsis saying "larch-clad barn conversion"
-  is worth ten listings saying "Episode 4".
-- **Aired in the last week**: same, plus any sign it landed (press pickup,
-  social chatter, a look people are asking about).
+## Step 3 — research
+Use web search. Direct fetching of listings sites and APIs is blocked by the
+network policy here, so search is your instrument. Don't report a show as
+unreachable without having searched for it.
 
-Then sweep Tier 2 and seasonal events for anything notable.
+**Tier 1 mainstream shows first.** A garden item on The One Show or Morning Live
+reaches more of our customers than a whole specialist episode. Then Tier 2.
+Then events.
 
-Search efficiently: batch your queries, and do not spend more than a handful of
-searches per show. Six to ten well-chosen searches beats forty scattergun ones.
+For each: what airs in the coming week (date, time, channel, and what the
+episode actually features) and what aired last week, plus whether it landed.
 
-## Step 3 — judge
-For each candidate signal, ask:
-1. **Is there a real material moment?** "They built an extension" is not a
+**Weight anything local.** Frome plus 60 miles: Somerset, Wiltshire, Dorset,
+BANES, Bristol, south Gloucestershire, west Hampshire, over to Newport and
+Cardiff. A build filmed in Somerset is a different proposition from one in
+Aberdeen. Say so.
+
+Then sweep social, as far as search allows: what's rising on YouTube in our
+subject areas, and anything visible in the Instagram hashtags we watch. Be
+straight about what you could and couldn't see.
+
+Batch queries. Eight to twelve well-chosen searches beat forty scattergun ones.
+
+## Step 4 — judge
+1. **Is it the right season?** A decking moment in April is worth ten of the same
+   in November. Counter-seasonal moments are save-for-later assets, and should be
+   labelled as such rather than pushed.
+2. **Is there a real material moment?** "They built an extension" is not a
    signal. "They clad it in charred larch" is.
-2. **Do we sell it?** Check the signal map. If it maps to a GAP, either pivot to
-   the nearest substitute and say so, or drop it. Never tie in on roof battens.
-3. **Would a customer in Somerset, Wiltshire or Dorset act on it?** National
-   noise we cannot serve is not a signal, unless it is slabs or specials, which
-   we do ship further.
+3. **Do we sell it?** Check the signal map. Never tie in on a GAP, especially
+   roof battens.
+4. **Is it local, or can we serve it?** National noise we can't supply isn't a
+   signal, unless it's slabs or specials, which we ship further.
 
-Rank ruthlessly. Three real signals beat twelve maybes. If a week is genuinely
-quiet, say so in one line — a thin honest brief is more useful than a padded
-one, and it stops the whole thing becoming wallpaper.
+Rank ruthlessly. Three real signals beat twelve maybes. If the week is quiet on
+screen, say so in a line and write the brief about what the season is doing. A
+seasonal brief with no TV in it is a complete brief.
 
-## Step 4 — write the brief
+## Step 5 — write it
 Create a page in the Notion database
 `collection://08871a63-ae14-46d9-a84f-1875df514117`
-("📡 Trend Watch — Weekly Briefs") with:
+("📡 Trend Watch — Weekly Briefs").
 
-**Properties**
-- `Week`: e.g. "Week of 22 September 2026"
-- `Week starting`: that Monday's date
-- `Headline signal`: one sentence, the single thing worth acting on
-- `Products in play`: tag the relevant product groups
-- `Status`: New
-- `Confidence`: High / Medium / Low, honestly set
+**Properties:** `Week` · `Week starting` · `Headline signal` (one sentence) ·
+`Products in play` · `Status` = New · `Confidence`, honestly set.
 
-**Page content**, in this order:
+**Content, in this order:**
+
+### Where we are in the year
+Two or three lines. The month, what should be selling anyway, and anything the
+weather is doing. This comes first every week, whatever is on telly.
 
 ### This week's call
-Two or three sentences. What to do, and by when. If the answer is "nothing much
-this week", say that.
+What to do, and by when.
 
-### Airing this week
-A table: Show · When · What's in it · What it means for us.
-Only rows with a real material moment.
+### On screen this week
+Table: Show · When · What's in it · Local? · What it means for us.
+Mainstream first. Only rows with a real material moment.
 
 ### Landed last week
-Same shape, plus whether it seems to have cut through.
+Same shape, plus whether it cut through.
+
+### Social
+What's rising on YouTube in our areas, anything notable in the Instagram tags.
+Say plainly what you could not see rather than padding.
 
 ### Ready to post
-For each of the top two or three signals:
+For the top two or three signals:
 - **The hook** — one line on why anyone cares
-- **The product** — what we'd actually sell, in the customer's words
-- **Draft caption** — genuinely postable, 40 to 80 words, in Valley's voice:
-  plain, knowledgeable, a working sawmill talking to people who like wood. No
-  prices. No em-dashes. No hashtag soup, three or four at most. Do not imply the
-  programme endorsed us.
+- **The product** — in the customer's words
+- **Draft caption** — postable, 40 to 80 words, Valley's voice: plain,
+  knowledgeable, a working sawmill talking to people who like wood. No prices.
+  No em-dashes. Three or four hashtags at most, including a local one. Never
+  imply a programme endorsed us.
 - **The asset** — what photo or video we need, and whether we likely have it
 
-### Watch list for the weeks ahead
-Anything airing 2 to 6 weeks out worth stocking or planning for. This is where
-the real advantage is: knowing in September what airs in October.
+### The weeks ahead
+What's coming in the next two to six weeks, seasonal turns included. This is
+where the advantage is: knowing in September what October needs.
 
 ### Sources
-Links, so Kev can check anything that looks surprising.
+Links.
 
-## Step 5 — report back
-Reply in the session with the headline signal, the top action, and the Notion
-link. Three lines. The detail lives in the brief.
+## Step 6 — report back
+Reply with the headline signal, the top action, and the Notion link. Three lines.
 
 ## Standing rules
-- Never invent an episode, air date or synopsis. If you cannot confirm what an
-  episode contains, say "content not yet published" and move on. A made-up
+- Never invent an episode, air date or synopsis. If you can't confirm what an
+  episode contains, write "content not yet published" and move on. A made-up
   synopsis that sends stock decisions the wrong way is worse than a blank row.
-- Distinguish confirmed listings from inference, and mark which is which.
-- If a source contradicts another, say so rather than picking silently.
+- Mark clearly what is a confirmed listing and what is inference.
+- If sources contradict each other, say so rather than picking silently.
+- A thin honest brief beats a padded one. This only stays useful if Kev trusts
+  that a quiet week gets reported as a quiet week.
