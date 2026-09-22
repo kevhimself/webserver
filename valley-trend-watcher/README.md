@@ -54,6 +54,17 @@ lead time. Google Trends, Instagram and Pinterest are all worth adding, and
 Trends in particular would let us *prove* the effect rather than assert it. They
 are deliberately out of v1.
 
+## Setup — one thing still to do
+
+**The Routine needs the Notion connector attached, and that has to be done by a
+human.** A Routine created from inside a Claude Code session cannot carry
+connector grants, so as it stands the Monday session will fire without Notion
+tools and fall back to writing the brief into `briefs/` in this repo.
+
+To fix it properly: open the Routine **Valley Sawmills — weekly trend brief** in
+claude.ai settings and attach the **Notion** connector. Takes a minute, and then
+briefs land in Notion as intended.
+
 ## Known limits
 
 - **Forward episode content is thin.** Broadcasters publish dates well ahead but
