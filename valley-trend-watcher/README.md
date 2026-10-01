@@ -29,6 +29,7 @@ config files here, researches the week, and writes the brief into Notion.
 | File | What it controls |
 | --- | --- |
 | `config/seasonal-calendar.md` | The demand calendar. Outranks everything else. |
+| `config/where-we-look.md` | Where trends are sourced: global, national, platform, comparator towns, regulation, weather. |
 | `config/shows.md` | The watchlist, weighted to mainstream reach, plus the 60-mile catchment. |
 | `config/social-sources.md` | YouTube, Instagram and the Met Office feed, with their real limits. |
 | `config/signal-map.md` | Moment to Valley product. |

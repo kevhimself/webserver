@@ -19,6 +19,9 @@ saying Notion was unavailable. See the Setup note in the README.
 Read these from `kevhimself/webserver`, branch
 `claude/valley-sawmills-trend-watcher-78fufk`:
 - `config/seasonal-calendar.md` — **read this first, it outranks everything else**
+- `config/where-we-look.md` — the trend sources: global, national, platform,
+  comparator towns, regulation, weather. Outward for the signal, inward for
+  whether we can serve it
 - `config/shows.md` — the watchlist, weighted to mainstream reach
 - `config/social-sources.md` — YouTube, Instagram and the weather feed
 - `config/signal-map.md` — moment to product
@@ -50,7 +53,14 @@ Then events.
 For each: what airs in the coming week (date, time, channel, and what the
 episode actually features) and what aired last week, plus whether it landed.
 
-**Weight anything local.** Frome plus 60 miles: Somerset, Wiltshire, Dorset,
+**Source outward, judge inward.** The catchment rings decide who we sell to,
+not where a trend comes from. Look globally and nationally for the signal, then
+ask whether we can serve it. Include a sweep of the comparator towns (Totnes,
+Stroud, Hebden Bridge, Lewes, Glastonbury, Hay-on-Wye, Todmorden, Machynlleth,
+Ashburton and the independent pockets of Bristol and Bath): they share Frome's
+character and a trend landing there is close to landing here.
+
+**Then weight for whether we can serve it.** Frome plus 60 miles: Somerset, Wiltshire, Dorset,
 BANES, Bristol, south Gloucestershire, west Hampshire, over to Newport and
 Cardiff. A build filmed in Somerset is a different proposition from one in
 Aberdeen. Say so.
