@@ -19,6 +19,42 @@ Notion: **Valley Sawmills → 📡 Trend Watch — Weekly Briefs**
 One page per week, filterable by product group and status, with an email nudge
 on Monday morning pointing at it.
 
+## How to run it, or change what it does
+
+**The console is the Claude Code session that built it:**
+<https://claude.ai/code/session_01N9UYkxctHsy4CeVs27bHzg>
+
+Open that chat and ask. It holds the tools and the context for why things are
+the way they are.
+
+| What you want | What to say |
+| --- | --- |
+| A brief now, off-schedule | "Re-run the trend watcher" |
+| Change what it watches | "Add Clarkson's Farm to tier 1" |
+| Add a trend source | "Add Bruton and Shaftesbury to the comparator towns" |
+| Change the day or time | "Move the brief to Thursday" |
+| Change the output | "Two posts a week, not three" |
+| Fix the voice | "It's too salesy, pull it back" |
+| Check it actually ran | "Did last Monday's brief file?" |
+
+**Reference:**
+
+- **Routine:** Valley Sawmills — weekly trend brief (`trig_01LRMwJbZAvt3P8T3LZEiVEJ`),
+  Mondays 7am, email and phone notification. Editable directly under Routines in
+  claude.ai if you'd rather not go through the chat.
+- **Config:** this folder, branch `claude/valley-sawmills-trend-watcher-78fufk`.
+- **Output:** Notion, Marketing & Events › Trend Watch.
+- **Role documentation:** Notion, AI @ Valley › The AI Team.
+
+> ⚠️ **Keep the two copies in step.** The Routine's prompt is self-contained: it
+> carries a copy of this config inline so it works without a repo checkout. If
+> you change a file here, ask the session to push the change through to the
+> Routine as well, or the two drift apart.
+
+**If that session has gone stale,** start a fresh Claude Code session on this
+repo, point it at this README and the AI Team page in Notion, and it picks up
+where the last one left off. Nothing important lives only in the chat.
+
 ## How it runs
 
 No server, no app. A scheduled Claude session fires every Monday, reads the
