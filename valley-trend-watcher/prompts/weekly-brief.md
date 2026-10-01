@@ -22,6 +22,8 @@ Read these from `kevhimself/webserver`, branch
 - `config/shows.md` — the watchlist, weighted to mainstream reach
 - `config/social-sources.md` — YouTube, Instagram and the weather feed
 - `config/signal-map.md` — moment to product
+- `config/social-plan.md` — how Valley actually posts: Facebook first, the three
+  pillars, the posting days, and the two local rings
 - `config/voice.md` — **read before writing a single caption.** Carries the
   Voice Guide's rules and, critically, the three claims rules: we buy in most of
   what we sell, we never offer to make or cut what we haven't confirmed, and the
@@ -105,15 +107,20 @@ Say plainly what you could not see rather than padding.
 
 ### Ready to post
 For the top two or three signals:
+- **Pillar and slot** — which of the three pillars it serves, and which posting
+  day it suits (Mon/Tue for trust and story, Thu/Fri or Sun evening for the
+  buying moments)
 - **The hook** — one line on why anyone cares
 - **The product** — in the customer's words
 - **Draft caption** — 40 to 80 words, written the way Garth, Caspar, Garry or
   Kev would say it at the counter. Say the useful thing first. Demonstrate
   knowledge, don't announce it. No prices, no em-dashes, no emoji, no
   romanticising the wood. "firewood" not "logs". Three or four hashtags at most,
-  including a local one. Never imply a programme endorsed us, never imply we
-  milled something we bought in, and never offer to make or cut anything not
-  confirmed. **Label it a draft for human edit before publish.**
+  including a local one, and only on the Instagram version. Never imply a
+  programme endorsed us, never imply we milled something we bought in, and never
+  offer to make or cut anything not confirmed. **Label it a draft for human edit
+  before publish.** Write the Facebook version first: that's where the buyers
+  are.
 - **The asset** — what photo or video we need, and whether we likely have it
 
 ### The weeks ahead

@@ -55,8 +55,8 @@ Feed: <https://metoffice.github.io/nswws-public-api/> (free, machine-readable)
 - **Who:** Valley Sawmills, the trading name of Herriard Sawmills Ltd. Holwell,
   Frome, Somerset. On the A361 just off the Nunney Catch roundabout. Fifty years
   in and around Nunney. 01373 636 375, hello@valleysawmills.co.uk
-  ⚠️ **Postcode conflict in Notion:** the Voice Guide says BA11 3LN, the Software
-  and Tools page says BA11 4PZ. Do not use either in copy until Kev confirms.
+  **BA11 4PZ** (confirmed by Kev, 1 October 2026). The Voice Guide still says
+  BA11 3LN and needs correcting at source.
 - **Catchment: Frome plus 60 miles.** Somerset, Wiltshire, Dorset, BANES,
   Bristol, south Gloucestershire, west Hampshire, over the bridge to Newport and
   Cardiff. National interest only for slabs and specials, which we do ship.

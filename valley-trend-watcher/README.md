@@ -32,6 +32,7 @@ config files here, researches the week, and writes the brief into Notion.
 | `config/shows.md` | The watchlist, weighted to mainstream reach, plus the 60-mile catchment. |
 | `config/social-sources.md` | YouTube, Instagram and the Met Office feed, with their real limits. |
 | `config/signal-map.md` | Moment to Valley product. |
+| `config/social-plan.md` | How Valley actually posts: Facebook first, three pillars, posting days, the two local rings. |
 | `config/voice.md` | Voice and claims rules, drawn from the Valley Voice Guide. Governs every caption. |
 | `prompts/weekly-brief.md` | What the watcher does each Monday. |
 
@@ -101,9 +102,8 @@ you rely on, spend £20 a month there. Don't spend anything on TV data.
 
 ## Flagged for Kev
 
-- **Postcode conflict.** The Voice Guide says Holwell, Frome, Somerset, BA11 3LN.
-  The Software and Tools page says Holwell, Nr Nunney, Frome, BA11 4PZ. The
-  watcher will not put either in copy until this is settled.
+- **Postcode settled: BA11 4PZ** (Kev, 1 October 2026). The Valley Voice Guide
+  still carries BA11 3LN and should be corrected at source.
 - **The seasonal calendar here may be the "annual marketing calendar" that
   Marketing & Events lists as drafted elsewhere and needing a home.** Worth
   reconciling rather than keeping two.

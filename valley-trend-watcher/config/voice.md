@@ -87,6 +87,18 @@ Service pillars: mill · cut-to-size · species knowledge.
 Brand line: *Where Materials Meet Their Makers.*
 Show line: *Something's Happening at Valley.*
 
+## Where it's going
+
+**Facebook first, Instagram second.** Facebook is where Valley's buyers are:
+local, 45 to 64. Instagram is younger, wider and only about 43% UK. Write the
+Facebook version first.
+
+Hashtags are an Instagram habit. A Facebook post doesn't need a row of them. On
+Instagram, three or four, including a local one.
+
+**Every post maps to one of the three pillars:** proof it's reliable and ready,
+trust and story, or ease of buying. Say which. See `social-plan.md`.
+
 ## The two copy tests
 
 1. Would someone at Valley actually say this to a customer at the counter? If
