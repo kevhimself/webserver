@@ -12,7 +12,7 @@ jobs:
       contents: write
 
     steps:
-      - name: Checkout main
+      - name: Checkout webserver repo
         uses: actions/checkout@v4
         with:
           ref: main
@@ -28,16 +28,55 @@ jobs:
         env:
           CI: 'true'
 
-      - name: Commit and push if a new issue was written
+      - name: Commit to webserver repo if a new issue was written
+        id: commit
         run: |
           git config user.name  "Valley Magazine Bot"
           git config user.email "noreply@github.com"
           git add magazines/
           if git diff --cached --quiet; then
             echo "No new issue this run — already up to date."
+            echo "new_issue=false" >> $GITHUB_OUTPUT
           else
             DATE=$(date +%Y-%m-%d)
             git commit -m "Auto-publish ${DATE} Valley Magazine issue
+
+Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>"
+            git push origin main
+            echo "new_issue=true" >> $GITHUB_OUTPUT
+          fi
+
+      # ── Deploy to Cloudflare via valley-sawmills/valley-apps ──────────────
+      # Requires VALLEY_APPS_TOKEN secret (GitHub PAT, write access to valley-apps)
+      # Cloudflare Pages watches valley-sawmills/valley-apps and auto-deploys on push.
+
+      - name: Checkout valley-apps (external customer node)
+        if: steps.commit.outputs.new_issue == 'true'
+        uses: actions/checkout@v4
+        with:
+          repository: valley-sawmills/valley-apps
+          token: ${{ secrets.VALLEY_APPS_TOKEN }}
+          path: valley-apps
+          ref: main
+
+      - name: Sync magazine files to external/public/magazine/
+        if: steps.commit.outputs.new_issue == 'true'
+        run: |
+          mkdir -p valley-apps/external/public/magazine
+          cp magazines/*.html valley-apps/external/public/magazine/
+
+      - name: Commit and push to valley-apps (triggers Cloudflare Pages deploy)
+        if: steps.commit.outputs.new_issue == 'true'
+        run: |
+          cd valley-apps
+          git config user.name  "Valley Magazine Bot"
+          git config user.email "noreply@github.com"
+          DATE=$(date +%Y-%m-%d)
+          git add external/public/magazine/
+          if git diff --cached --quiet; then
+            echo "Already in sync — nothing to push."
+          else
+            git commit -m "Valley Magazine — sync ${DATE} issue to external
 
 Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>"
             git push origin main
