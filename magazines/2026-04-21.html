@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valley Magazine — Spring 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --amber:      #BF7F2E;
+  --cream:      #F5EDD6;
+  --forest:     #0D2218;
+  --sage:       #B8CEB5;
+  --terracotta: #B85A42;
+  --ivory:      #F4EFE3;
+  --midnight:   #0D1117;
+  --tgreen:     #22C55E;
+  --aubergine:  #2C1B47;
+  --lime:       #D8FF4F;
+  --splitgreen: #1A4535;
+  --sand:       #E4D0AF;
+  --bark:       #3A2518;
+  --charcoal:   #1A1A1A;
+  --white:      #FFFFFF;
+}
+
+html { scroll-behavior: smooth; overflow-x: hidden; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--cream);
+  color: var(--charcoal);
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+.nav {
+  position: sticky; top: 0; z-index: 200;
+  background: var(--forest);
+  padding: 0.9rem 2.5rem;
+  display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;
+}
+.nav-logo {
+  font-family: 'Fraunces', serif; font-weight: 900;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  color: var(--lime); letter-spacing: -0.01em;
+  margin-right: auto;
+}
+.nav a {
+  font-family: 'Inter', sans-serif; font-weight: 700;
+  font-size: max(14px, 0.8rem);
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(216,255,79,.55); text-decoration: none;
+  transition: color .2s;
+}
+.nav a:hover { color: var(--lime); }
+
+/* ── SPREAD BASE ── */
+.spread {
+  min-height: 100vh;
+  padding: clamp(3rem, 6vw, 7rem) clamp(2rem, 7vw, 9rem);
+  position: relative; overflow: hidden;
+}
+
+/* ── SHARED TYPE ── */
+.label {
+  font-family: 'Inter', sans-serif; font-weight: 700;
+  font-size: max(14px, 0.82rem);
+  letter-spacing: 0.2em; text-transform: uppercase; opacity: .65;
+}
+.story-num {
+  font-family: 'Fraunces', serif; font-weight: 900;
+  font-size: max(16px, 1rem);
+  opacity: .22;
+}
+.ghost {
+  position: absolute; pointer-events: none; user-select: none;
+  font-family: 'Fraunces', serif; font-weight: 900;
+  line-height: 1; opacity: .07;
+}
+
+/* COVER */
+#cover {
+  background: var(--forest);
+  min-height: 100vh;
+  padding: clamp(3rem,6vw,7rem) clamp(2rem,7vw,9rem);
+  display: flex; flex-direction: column; justify-content: space-between;
+  position: relative; overflow: hidden;
+}
+#cover::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    repeating-linear-gradient(90deg,  rgba(255,255,255,.018) 0 1px, transparent 1px 88px),
+    repeating-linear-gradient(0deg,   rgba(255,255,255,.018) 0 1px, transparent 1px 88px);
+  pointer-events: none;
+}
+.cover-meta { display: flex; justify-content: space-between; align-items: flex-start; }
+.cover-meta-label {
+  font-family: 'Inter', sans-serif; font-weight: 700;
+  font-size: max(14px, 0.82rem);
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--lime);
+}
+.cover-meta-issue {
+  font-family: 'Inter', sans-serif;
+  font-size: max(14px, 0.82rem);
+  letter-spacing: 0.08em;
+  color: rgba(245,237,214,.4);
+}
+.cover-title {
+  font-family: 'Fraunces', serif; font-weight: 900;
+  font-size: clamp(7rem, 23vw, 26rem);
+  line-height: .85; letter-spacing: -0.02em;
+  color: var(--cream);
+  position: relative; z-index: 1;
+}
+.cover-title .lime { color: var(--lime); }
+.cover-tagline {
+  font-family: 'Fraunces', serif; font-style: italic;
+  font-size: clamp(1.4rem, 3vw, 2.6rem);
+  color: var(--sage); margin-top: .8rem;
+}
+.cover-bottom { display: flex; justify-content: space-between; align-items: flex-end; }
+.cover-stories {
+  font-family: 'Inter', sans-serif; font-size: max(16px, 1rem);
+  color: rgba(245,237,214,.65); line-height: 2.1;
+}
+.cover-stories strong { color: var(--lime); font-weight: 600; }
+.cover-colophon {
+  font-family: 'Fraunces', serif; font-style: italic;
+  font-size: max(16px, 1rem);
+  color: rgba(245,237,214,.25); text-align: right; line-height: 1.8;
+}
+
+/* STORY 01 — Hero / Amber */
+#s01 {
+  background: var(--amber);
+  color: var(--cream);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+  align-items: start;
+}
+#s01 .hdr { grid-column: 1/-1; display: flex; justify-content: space-between; align-items: baseline; }
+#s01 h1 {
+  font-family: 'Fraunces', serif; font-weight: 900;
+  font-size: clamp(3rem, 6.5vw, 7.5rem);
+  line-height: .92; letter-spacing: -0.02em;
+}
+#s01 .ghost { font-size: clamp(14rem,38vw,42rem); bottom: -.12em; right: -.04em; color: rgba(0,0,0,.12); }
+#s01 .body  { font-size: max(18px, 1.1rem); line-height: 1.82; }
+.steps { list-style: none; margin-top: 1.8rem; }
+.steps li {
+  display: flex; gap: 1.2rem; padding: 1.1rem 0;
+  border-top: 1px solid rgba(245,237,214,.3);
+  font-size: max(17px, 1rem); line-height: 1.7;
+}
+.steps li:last-child { border-bottom: 1px solid rgba(245,237,214,.3); }
+.sn {
+  font-family: 'Fraunces', serif; font-weight: 900;
+  font-size: max(22px, 1.4rem); opacity: .45; min-width: 1.6rem;
+}
+.materials {
+  background: rgba(0,0,0,.15); border-radius: 3px;
+  padding: 2rem; margin-top: 2.5rem;
+}
+.materials h3 {
+  font-family: 'Fraunces', serif; font-weight: 700;
+  font-size: max(22px, 1.4rem); margin-bottom: 1rem;
+}
+.materials ul { list-style: none; }
+.materials li {
+  padding: .5rem 0; border-bottom: 1px solid rgba(245,237,214,.2);
+  font-size: max(17px, 1rem); line-height: 1.6;
+}
+.materials li:last-child { border-bottom: none; }
+.tip {
+  background: rgba(0,0,0,.12); border-left: 3px solid var(--cream);
+  padding: 1.4rem 1.6rem; margin-top: 2rem;
+  font-size: max(17px, 1rem); line-height: 1.7;
+  font-style: italic;
+}
+
+/* STORY 02 — Rose / Terracotta Stamp */
+#s02 {
+  background: var(--terracotta);
+  color: var(--cream);
+  display: flex; flex-direction: column; justify-content: center;
+}
+#s02 .ghost { font-size: clamp(18rem,46vw,54rem); bottom: -.12em; right: -.04em; color: rgba(0,0,0,.08); }
+.stamp {
+  display: inline-flex; align-items: center;
+  border: 3px solid var(--cream); padding: .3em .75em;
+  font-family: 'Inter', sans-serif; font-weight: 900;
+  font-size: max(14px, 0.82rem);
+  letter-spacing: .2em; text-transform: uppercase;
+  transform: rotate(-2deg); transform-origin: left center;
+  margin-bottom: 2.5rem; align-self: flex-start;
+}
+#s02 h1 {
+  font-family: 'Fraunces', serif; font-weight: 900;
+  font-size: clamp(3.2rem, 8vw, 9.5rem);
+  line-height: .9; letter-spacing: -0.02em;
+  position: relative; z-index: 1; max-width: 16ch;
+}
+#s02 .sub {
+  font-family: 'Inter', sans-serif; font-size: max(18px, 1.1rem);
+  line-height: 1.7; max-width: 55ch;
+  color: rgba(245,237,214,.85); margin-top: 1.5rem;
+  position: relative; z-index: 1;
+}
+.pgrid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.4rem; margin-top: 2.5rem; position: relative; z-index: 1;
+}
+.pcard {
+  background: rgba(0,0,0,.14); border-radius: 3px; padding: 1.5rem;
+}
+.pcard-name {
+  font-family: 'Fraunces', serif; font-weight: 700;
+  font-size: max(22px, 1.4rem); margin-bottom: .5rem;
+}
+.pcard-notes { font-size: max(16px, .95rem); opacity: .85; line-height: 1.65; }
+
+/* STORY 03 — Dark / Midnight */
+#s03 {
+  background: var(--forest);
+  color: var(--sage);
+  display: grid; grid-template-columns: 1fr 1.5fr; gap: 5rem; align-items: center;
+}
+#s03 .ghost { font-size: clamp(16rem,44vw,52rem); top: -.1em; left: -.04em; color: rgba(200,222,195,.04); }
+#s03 h1 {
+  font-family: 'Fraunces', serif; font-weight: 900;
+  font-size: clamp(3rem, 7vw, 8.5rem);
+  line-height: .92; color: var(--cream);
+  position: relative; z-index: 1;
+}
+#s03 h1 em { font-style: italic; color: var(--sage); }
+#s03 .body { font-size: max(18px, 1.1rem); line-height: 1.88; color: var(--sage); }
+#s03 blockquote {
+  font-family: 'Fraunces', serif; font-style: italic;
+  font-size: max(24px, 1.55rem);
+  border-left: 3px solid var(--lime); padding-left: 1.6rem;
+  color: var(--cream); margin: 2.5rem 0; line-height: 1.3;
+}
+
+/* STORY 04 — Academic Drop-Cap / Ivory */
+#s04 {
+  background: var(--ivory);
+  color: var(--bark);
+}
+#s04 .hdr {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 2.5rem;
+}
+#s04 h1 {
+  font-family: 'Fraunces', serif; font-weight: 900;
+  font-size: clamp(2.8rem, 5.5vw, 6.5rem);
+  line-height: .95; margin-bottom: 2.5rem;
+}
+#s04 .cols { column-count: 2; column-gap: 4rem; }
+#s04 p {
+  font-family: 'Inter', sans-serif; font-size: max(18px, 1.08rem);
+  line-height: 1.9; margin-bottom: 1.2em;
+  break-inside: avoid;
+}
+#s04 p.dropcap::first-letter {
+  font-family: 'Fraunces', serif; font-weight: 900;
+  font-size: clamp(5rem, 10vw, 9rem);
+  float: left; line-height: .8;
+  margin-right: .12em; margin-bottom: -.05em;
+  color: var(--terracotta);
+}
+#s04 h3 {
+  font-family: 'Fraunces', serif; font-weight: 700;
+  font-size: max(22px, 1.35rem);
+  margin: 1.8rem 0 .5rem;
+}
+#s04 .ghost { font-size: clamp(14rem,38vw,44rem); bottom: -.1em; right: -.04em; color: rgba(58,37,24,.05); }
+
+/* STORY 05 — Terminal / Midnight */
+#s05 {
+  background: var(--midnight);
+  color: var(--tgreen);
+  display: flex; flex-direction: column; justify-content: center;
+}
+#s05 h1 {
+  font-family: 'Fraunces', serif; font-weight: 900;
+  font-size: clamp(2.8rem, 6.5vw, 8rem);
+  line-height: .92; color: #fff; margin-bottom: 3rem;
+}
+#s05 h1 .acc { color: var(--tgreen); }
+.tblock {
+  background: rgba(34,197,94,.07);
+  border: 1px solid rgba(34,197,94,.28);
+  border-radius: 4px; padding: 2rem;
+  font-family: 'Courier New', monospace;
+  font-size: max(16px, .95rem); line-height: 2.1;
+  margin-bottom: 2.5rem;
+}
+.tblock .pr  { color: var(--tgreen); }
+.tblock .cmd { color: #fff; }
+.tblock .out { color: rgba(34,197,94,.72); padding-left: 1.4rem; }
+.tblock .cmt { color: rgba(34,197,94,.35); }
+#s05 .body {
+  font-family: 'Inter', sans-serif; font-size: max(18px, 1.08rem);
+  line-height: 1.85; color: rgba(34,197,94,.78); max-width: 62ch;
+}
+#s05 .body p + p { margin-top: 1.4rem; }
+#s05 .ghost { font-size: clamp(14rem,36vw,40rem); bottom: -.1em; right: -.04em; color: rgba(34,197,94,.04); }
+
+/* STORY 06 — Big-Stat Finish / White */
+#s06 {
+  background: var(--white);
+  color: var(--charcoal);
+  display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto auto; gap: 0;
+  padding: 0;
+}
+#s06 .shdr {
+  grid-column: 1/-1;
+  padding: clamp(2.5rem,5vw,5rem) clamp(2rem,7vw,9rem) 0;
+  display: flex; justify-content: space-between; align-items: baseline;
+  border-bottom: 2px solid var(--charcoal);
+  padding-bottom: 1.5rem;
+}
+#s06 h1 {
+  font-family: 'Fraunces', serif; font-weight: 900;
+  font-size: clamp(2.2rem, 4.5vw, 5rem); line-height: 1;
+}
+.sblock {
+  padding: clamp(2rem,4vw,4rem) clamp(2rem,7vw,9rem);
+  border-bottom: 1px solid #e8e8e8;
+  border-right: 1px solid #e8e8e8;
+}
+.sblock:nth-child(even) { border-right: none; }
+.snum {
+  font-family: 'Fraunces', serif; font-weight: 900;
+  font-size: clamp(5rem, 10vw, 12rem); line-height: .88;
+  color: var(--terracotta);
+}
+.sunit {
+  font-family: 'Inter', sans-serif; font-weight: 700;
+  font-size: max(18px, 1.1rem); margin-top: .4rem;
+}
+.slabel { font-size: max(16px, .95rem); color: #666; margin-top: .5rem; line-height: 1.55; }
+.shero {
+  grid-column: 1/-1;
+  padding: clamp(3rem,5vw,6rem) clamp(2rem,7vw,9rem);
+  text-align: center; border-top: 1px solid #e8e8e8;
+}
+.shero .snum { font-size: clamp(8rem, 22vw, 26rem); color: var(--forest); }
+.shero .sunit { font-size: max(20px, 1.3rem); }
+.shero .slabel { font-size: max(17px, 1rem); max-width: 60ch; margin: .5rem auto 0; }
+
+/* STORY 07 — Split: Forest / Cream */
+#s07 {
+  display: grid; grid-template-columns: 1fr 1fr;
+  padding: 0; min-height: 100vh;
+}
+.sl {
+  background: var(--splitgreen); color: var(--cream);
+  padding: clamp(3rem,6vw,7rem) clamp(2rem,6vw,7rem);
+  display: flex; flex-direction: column; justify-content: center;
+}
+.sr {
+  background: var(--cream); color: var(--bark);
+  padding: clamp(3rem,6vw,7rem) clamp(2rem,6vw,7rem);
+  display: flex; flex-direction: column; justify-content: center;
+}
+.sl h1 {
+  font-family: 'Fraunces', serif; font-weight: 900;
+  font-size: clamp(2.8rem, 5.5vw, 6rem); line-height: .92;
+}
+.sl p {
+  font-size: max(18px, 1.05rem); line-height: 1.82;
+  color: rgba(245,237,214,.82); margin-top: 1.5rem;
+}
+.sl p + p { margin-top: 1.2rem; }
+.principle { padding: 1.8rem 0; border-bottom: 1px solid rgba(58,37,24,.18); }
+.principle:last-child { border-bottom: none; }
+.ptitle {
+  font-family: 'Fraunces', serif; font-weight: 700;
+  font-size: max(22px, 1.35rem); margin-bottom: .4rem;
+}
+.pdesc { font-size: max(17px, 1rem); line-height: 1.7; opacity: .75; }
+
+/* STORY 08 — Pull Quote / Aubergine */
+#s08 {
+  background: var(--aubergine); color: var(--cream);
+  display: flex; flex-direction: column; justify-content: center;
+}
+#s08 .ghost { font-size: clamp(18rem,46vw,56rem); bottom: -.1em; right: -.04em; color: rgba(245,237,214,.04); }
+.pq-open {
+  font-family: 'Fraunces', serif; font-weight: 900;
+  font-size: clamp(6rem, 14vw, 17rem); color: var(--lime);
+  line-height: .65; display: block; margin-bottom: -.1em;
+}
+.pq {
+  font-family: 'Fraunces', serif; font-weight: 800; font-style: italic;
+  font-size: clamp(2.2rem, 5.5vw, 7rem); line-height: 1.08;
+  max-width: 22ch; color: var(--cream); position: relative; z-index: 1;
+}
+.pq-attr {
+  font-family: 'Inter', sans-serif; font-weight: 700;
+  font-size: max(16px, 1rem);
+  letter-spacing: .12em; text-transform: uppercase;
+  color: rgba(245,237,214,.42); margin-top: 2.5rem;
+  position: relative; z-index: 1;
+}
+
+/* STORY 09 — Companion Planting / Sand */
+#s09 {
+  background: var(--sand); color: var(--bark);
+  display: grid; grid-template-columns: 1fr 2fr; gap: 5rem; align-items: start;
+}
+#s09 .sidebar { position: sticky; top: 5rem; }
+#s09 h1 {
+  font-family: 'Fraunces', serif; font-weight: 900;
+  font-size: clamp(2.8rem, 5.5vw, 5.5rem); line-height: .92;
+}
+#s09 .sub { font-size: max(18px, 1.08rem); line-height: 1.8; margin-top: 1.5rem; opacity: .82; }
+.cpairs { border-top: 1px solid rgba(58,37,24,.18); }
+.cprow {
+  display: grid; grid-template-columns: 1fr auto 1.6fr;
+  gap: 1.5rem; align-items: center;
+  padding: 1.6rem 0; border-bottom: 1px solid rgba(58,37,24,.14);
+}
+.cprow:last-child { border-bottom: none; }
+.cpplant {
+  font-family: 'Fraunces', serif; font-weight: 700;
+  font-size: max(22px, 1.35rem);
+}
+.cpsep { opacity: .28; font-size: max(22px, 1.4rem); }
+.cpwhy { font-size: max(16px, .95rem); line-height: 1.55; opacity: .75; }
+.cpwhy strong { font-weight: 700; font-size: max(18px, 1.08rem); opacity: 1; display: block; margin-bottom: .15rem; }
+
+/* STORY 10 — Outro / Forest + Lime */
+#s10 {
+  background: var(--forest); color: var(--cream);
+  display: grid; grid-template-columns: 1.1fr 1fr; gap: 5rem; align-items: center;
+}
+#s10 h1 {
+  font-family: 'Fraunces', serif; font-weight: 900;
+  font-size: clamp(3.2rem, 6.5vw, 8rem);
+  line-height: .9; color: var(--cream);
+}
+#s10 h1 .acc { color: var(--lime); }
+#s10 .sub { font-size: max(18px, 1.08rem); line-height: 1.8; color: rgba(245,237,214,.7); margin-top: 1.8rem; max-width: 44ch; }
+.vlist { list-style: none; }
+.vlist li {
+  display: flex; gap: 1.5rem; padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(245,237,214,.13);
+  font-size: max(17px, 1.04rem); line-height: 1.65;
+  color: rgba(245,237,214,.82);
+}
+.vlist li:last-child { border-bottom: none; }
+.varrow {
+  font-family: 'Fraunces', serif; font-weight: 900;
+  font-size: max(22px, 1.4rem); color: var(--lime); min-width: 1.6rem;
+  flex-shrink: 0;
+}
+.vlist li strong { color: var(--cream); }
+
+/* COLOPHON */
+#colophon {
+  background: var(--cream); color: var(--bark);
+  padding: clamp(3rem,6vw,7rem) clamp(2rem,7vw,9rem);
+  border-top: 3px solid var(--forest);
+}
+.col-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3.5rem; }
+.col-logo {
+  font-family: 'Fraunces', serif; font-weight: 900;
+  font-size: clamp(2rem, 4vw, 4.5rem); color: var(--forest);
+}
+.col-tag {
+  font-family: 'Fraunces', serif; font-style: italic;
+  font-size: max(18px, 1.08rem); color: var(--amber); margin-top: .3rem;
+}
+.col-desc { font-size: max(17px, 1rem); line-height: 1.85; margin-top: 1.5rem; opacity: .72; }
+.col-h {
+  font-family: 'Inter', sans-serif; font-weight: 700;
+  font-size: max(13px, .78rem);
+  letter-spacing: .2em; text-transform: uppercase;
+  margin-bottom: 1rem; opacity: .45;
+}
+.col-p { font-size: max(17px, 1rem); line-height: 1.9; }
+.col-p a { color: var(--bark); text-decoration: none; }
+.col-p a:hover { color: var(--terracotta); }
+.next { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(58,37,24,.18); display: flex; gap: 2.5rem; align-items: center; }
+.next-lbl { font-family: 'Inter', sans-serif; font-weight: 700; font-size: max(13px, .78rem); letter-spacing: .2em; text-transform: uppercase; opacity: .45; flex-shrink: 0; }
+.next-title { font-family: 'Fraunces', serif; font-weight: 700; font-size: max(20px, 1.25rem); color: var(--forest); }
+
+/* RESPONSIVE */
+@media (max-width: 860px) {
+  .nav a { display: none; }
+  #s01 { grid-template-columns: 1fr; }
+  #s03 { grid-template-columns: 1fr; }
+  #s04 .cols { column-count: 1; }
+  #s06 { grid-template-columns: 1fr; }
+  #s06 .sblock { border-right: none; }
+  #s07 { grid-template-columns: 1fr; }
+  #s09 { grid-template-columns: 1fr; }
+  .cprow { grid-template-columns: 1fr 1.4fr; }
+  .cpsep { display: none; }
+  #s10 { grid-template-columns: 1fr; }
+  .col-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="nav-logo">Valley</span>
+  <a href="#s01">Planter</a>
+  <a href="#s02">Growing</a>
+  <a href="#s03">Living Wood</a>
+  <a href="#s04">Frome</a>
+  <a href="#s05">Workshop</a>
+  <a href="#s06">Numbers</a>
+  <a href="#s07">Repair</a>
+  <a href="#s08">Roots</a>
+  <a href="#s09">Companions</a>
+  <a href="#s10">Future</a>
+</nav>
+
+<section id="cover">
+  <div class="cover-meta">
+    <span class="cover-meta-label">Valley &mdash; Wood &middot; Season &middot; Soul</span>
+    <span class="cover-meta-issue">Spring Issue &nbsp;&middot;&nbsp; April 2026 &nbsp;&middot;&nbsp; Vol. I, No. 1</span>
+  </div>
+  <div>
+    <div class="cover-title">VAL<br><span class="lime">LEY</span></div>
+    <div class="cover-tagline">The magazine for people who make things with wood.</div>
+  </div>
+  <div class="cover-bottom">
+    <div class="cover-stories">
+      <strong>This Issue</strong><br>
+      Build a Sleeper Planter &nbsp;&middot;&nbsp; What to Grow This Spring<br>
+      The Wood That Breathes &nbsp;&middot;&nbsp; Frome&rsquo;s Quiet Revolution<br>
+      Making in the Machine Age &nbsp;&middot;&nbsp; Valley By the Numbers<br>
+      Repair, Reclaim, Build to Last &nbsp;&middot;&nbsp; Where We&rsquo;re Going
+    </div>
+    <div class="cover-colophon">Spring 2026<br>Frome, Somerset<br>Free &mdash; Always</div>
+  </div>
+</section>
+
+<section id="s01" class="spread">
+  <div class="ghost">01</div>
+  <div class="hdr">
+    <span class="label" style="color:rgba(245,237,214,.65);">Project &middot; Outdoor &middot; Spring</span>
+    <span class="story-num">01</span>
+  </div>
+  <div>
+    <h1>Build a Sleeper<br>Planter This<br>Weekend</h1>
+    <div class="body" style="margin-top:1.8rem;">
+      <p>Railway sleepers are one of the most honest materials you can work with. Dense, pre-weathered by decades of use, beautiful in a way that no factory-finish timber can match. A sleeper planter built properly will outlast you, your children, and quite possibly your grandchildren.</p>
+      <ol class="steps">
+        <li><span class="sn">1</span><span><strong>Choose your sleepers.</strong> Opt for <em>untreated oak</em> or reclaimed softwood for food growing &mdash; avoid old creosote-treated sleepers near edibles. Two sleepers deep gives you 450&nbsp;mm of growing depth.</span></li>
+        <li><span class="sn">2</span><span><strong>Mark out your bed.</strong> A classic working size: 1.2&nbsp;m &times; 2.4&nbsp;m. Wide enough to reach the centre from both sides without stepping on the soil.</span></li>
+        <li><span class="sn">3</span><span><strong>Stack in log-cabin style,</strong> alternating end joints for structural strength. Drill vertically through each layer and pin with 600&nbsp;mm rebar spikes &mdash; no screws, no brackets, just steel and gravity.</span></li>
+        <li><span class="sn">4</span><span><strong>Line the inside</strong> with landscape fabric, not plastic. Fabric retains soil while letting roots breathe and drainage flow.</span></li>
+        <li><span class="sn">5</span><span><strong>Fill in layers:</strong> rubble at the base, then compost, topped with a 50/50 mix of topsoil and compost. Expect it to settle 80&ndash;100&nbsp;mm in the first month.</span></li>
+        <li><span class="sn">6</span><span><strong>Wait one week, then plant.</strong> Your sleeper planter reaches its best in year three, as the wood greys beautifully and the soil biology matures.</span></li>
+      </ol>
+    </div>
+  </div>
+  <div>
+    <div class="materials">
+      <h3>What You&rsquo;ll Need</h3>
+      <ul>
+        <li>4&ndash;6 untreated oak sleepers (2.4&nbsp;m &times; 200&nbsp;mm &times; 100&nbsp;mm)</li>
+        <li>4 &times; 600&nbsp;mm rebar spikes + hammer drill, 20&nbsp;mm bit</li>
+        <li>Landscape fabric + heavy-duty staple gun</li>
+        <li>1 tonne mixed topsoil &amp; compost blend</li>
+        <li>Wheelbarrow, half a Saturday, a willing friend</li>
+        <li>Strong tea (essential)</li>
+      </ul>
+    </div>
+    <div class="tip"><strong>Sourcing in Frome:</strong> The Reclamation Yard on Wallbridge often carries reclaimed railway sleepers. Ask for sustainably sourced oak &mdash; it costs more than imported pine but lasts forty years. Valley can supply cut-to-length sleepers, or build the whole thing for you.</div>
+    <div class="body" style="margin-top:2rem;"><p>One 1.2&nbsp;&times;&nbsp;2.4&nbsp;m sleeper bed grows enough salad for a family of four all summer. Add a second and you&rsquo;re into courgettes, French beans, herbs, and kale from June through November. That&rsquo;s a food system in 6 square metres.</p></div>
+  </div>
+</section>
+
+<section id="s02" class="spread">
+  <div class="ghost">02</div>
+  <div class="stamp">Spring Growing Guide 2026</div>
+  <h1>What to Grow<br>in Your New<br>Planter</h1>
+  <p class="sub">You&rsquo;ve built the bed. Now fill it with something that will actually feed you. Spring 2026 is the year to commit to growing your own &mdash; here&rsquo;s what performs beautifully in a raised sleeper bed in Somerset.</p>
+  <div class="pgrid">
+    <div class="pcard"><div class="pcard-name">Salad Leaves</div><div class="pcard-notes">Fastest return on effort. Sow now, cut in 4 weeks. Sow another row the week after. Succession-sowing means leaves all summer from a tiny area.</div></div>
+    <div class="pcard"><div class="pcard-name">Climbing French Beans</div><div class="pcard-notes">Wait until after last frost &mdash; typically mid-May in the Frome valley. A hazel wigwam gives structure. High yield, deeply satisfying to pick fresh every evening.</div></div>
+    <div class="pcard"><div class="pcard-name">Courgettes</div><div class="pcard-notes">One plant per bed is genuinely enough &mdash; it will fill the space by July. Raised beds suit them perfectly: warmth, drainage, and you can see what you&rsquo;re harvesting.</div></div>
+    <div class="pcard"><div class="pcard-name">Herbs: The Essentials</div><div class="pcard-notes">Chives, parsley, dill and coriander from seed now. Rosemary and thyme from cuttings. A permanent herb corner changes how you cook all year.</div></div>
+    <div class="pcard"><div class="pcard-name">Kale &amp; Chard</div><div class="pcard-notes">Sow now for summer-to-winter harvest. Cavolo Nero is the one &mdash; it produces over months, handles frost, and looks spectacular as a border plant.</div></div>
+    <div class="pcard"><div class="pcard-name">Edible Flowers</div><div class="pcard-notes">Nasturtiums, borage, calendula at the edges. They attract pollinators, confuse pests, and you eat them in salads. Zero effort, maximum reward.</div></div>
+  </div>
+</section>
+
+<section id="s03" class="spread">
+  <div class="ghost">03</div>
+  <div style="position:relative;z-index:1;">
+    <span class="label" style="color:rgba(216,255,79,.7);">Essay &middot; Philosophy</span>
+    <h1 style="margin-top:1rem;">The <em>Living</em><br>Material</h1>
+  </div>
+  <div class="body" style="position:relative;z-index:1;">
+    <p>Every piece of wood you work with was alive. Not metaphorically &mdash; literally alive, pulling water up through its rings, responding to drought years and flood years, laying down extra-dense heartwood in decades of stress. When you cut into a sleeper or a beam, you&rsquo;re cutting into autobiography.</p>
+    <blockquote>&ldquo;Wood remembers the weather it grew in. Our job is to honour that memory.&rdquo;</blockquote>
+    <p>This is why Valley doesn&rsquo;t rush. We let timber acclimatise in the workshop before we cut it. We read the grain before we reach for a blade. A knot isn&rsquo;t a defect &mdash; it&rsquo;s where a branch once reached toward light. The shake in old oak isn&rsquo;t weakness &mdash; it&rsquo;s the record of a storm it survived.</p>
+    <p>Working with wood well requires you to slow down. In a world that values speed above everything, that is a quietly radical act. The grain asks you to pay attention. The weight asks you to be honest about what the material wants to be.</p>
+    <p>Spring is the right time to think about this. The trees outside your workshop window are doing precisely what they&rsquo;ve always done &mdash; waking up, pushing growth, reaching. They don&rsquo;t rush. Neither should we.</p>
+  </div>
+</section>
+
+<section id="s04" class="spread">
+  <div class="ghost">04</div>
+  <div class="hdr">
+    <span class="label" style="color:rgba(58,37,24,.55);">Community &middot; Place</span>
+    <span class="story-num" style="color:var(--terracotta);">04</span>
+  </div>
+  <h1>Frome&rsquo;s Quiet<br>Revolution</h1>
+  <div class="cols">
+    <p class="dropcap">Frome doesn&rsquo;t shout. That is its greatest trick. While other market towns hollowed out &mdash; charity shops replacing independents, chain coffee replacing local cafes &mdash; Frome quietly decided to become something else: a place where cooperative ownership, independent work, and community investment are the norm rather than the exception.</p>
+    <p>The Frome Independents movement gave local businesses a genuine collective identity. The Cheese &amp; Grain kept the town&rsquo;s gig economy alive without private investment. Edventure Frome turned empty buildings and spare land into workshops, studios, and growing spaces long before it was fashionable. The Repair Caf&eacute; started fixing things before the circular economy had a name.</p>
+    <h3>Where Valley Fits In</h3>
+    <p>Valley is part of that fabric. We source locally where we can &mdash; timber merchants who know where their wood comes from, tools bought second-hand from retiring craftspeople before we consider buying new. We work within the Frome network, the informal economy of favour and collaboration that runs quietly underneath the official business world.</p>
+    <p>Our workshop space exists because of community infrastructure that organisations like Edventure have kept alive. When we needed to expand our tool library, we borrowed before we bought. When we took on an apprentice last autumn, the onboarding happened partly through introductions from people we&rsquo;d helped and been helped by over three years.</p>
+    <h3>The Economics of Enough</h3>
+    <p>Frome operates on a different economic logic to most places. Not growth for growth&rsquo;s sake &mdash; enough. Enough to pay people fairly. Enough to maintain the space and the relationships. Enough to invest in the next project and take on the next person who needs a chance.</p>
+    <p>Valley shares that logic. We are not trying to scale to a national brand. We are trying to be genuinely useful to the place we live in, and to pass on the skills that make that possible. That is increasingly rare. That is exactly why it matters.</p>
+  </div>
+</section>
+
+<section id="s05" class="spread">
+  <div class="ghost">05</div>
+  <span class="label" style="color:rgba(34,197,94,.6);">Workshop &middot; Technology</span>
+  <h1 style="margin-top:1rem;">Making in the<br><span class="acc">Machine Age</span></h1>
+  <div class="tblock">
+    <div><span class="pr">valley@workshop:~$</span> <span class="cmd">describe --project sleeper-planter-v3 --output detailed</span></div>
+    <div class="out">&#10003; Design validated against client brief (outdoor, food-safe, 1.2&times;2.4m)</div>
+    <div class="out">&#10003; Timber quantities: 6 &times; 2.4m untreated oak sleepers calculated</div>
+    <div class="out">&#10003; Joint tolerances checked (oak seasonal expansion: +2.1mm per metre)</div>
+    <div class="out">&#10003; Waste material: 0.3m&sup2; &mdash; repurposed as border edging offcuts</div>
+    <div class="out">&#10003; Carbon estimate: 42kg CO&sup2;e (vs. 180kg for equivalent treated softwood)</div>
+    <div class="cmt"># Every cut optimised. Nothing wasted. Ready for workshop floor.</div>
+  </div>
+  <div class="body">
+    <p>Valley uses AI-assisted design tools to plan every build before a blade touches wood. Not to replace craft &mdash; to serve it. When you can model a hundred joint variations in ten minutes, you arrive at the bench with better decisions already made.</p>
+    <p>The hand tool and the algorithm are not opposites. The algorithm handles optimisation &mdash; quantities, tolerances, carbon footprint, material efficiency. The hand decides what&rsquo;s beautiful. Neither can do the other&rsquo;s job.</p>
+    <p>Valley is building open pattern libraries for our most common project types &mdash; sleeper beds, cold frames, tool stores, garden structures &mdash; so clients can see precisely what they&rsquo;re commissioning before we start. Transparent process, honest pricing, no surprises.</p>
+  </div>
+</section>
+
+<section id="s06">
+  <div class="shdr">
+    <h1>Valley By the Numbers</h1>
+    <span class="story-num" style="color:#e0e0e0;">06</span>
+  </div>
+  <div class="sblock"><div class="snum">47</div><div class="sunit">Projects Completed</div><div class="slabel">Planters, raised beds, tool stores, outdoor structures, furniture &mdash; since Valley started work in Frome in 2024.</div></div>
+  <div class="sblock"><div class="snum">3.2t</div><div class="sunit">Reclaimed Wood Used</div><div class="slabel">Sleepers, pallets, joinery salvage. Diverted from landfill, given a second life with better structural integrity than most new timber.</div></div>
+  <div class="sblock"><div class="snum">12</div><div class="sunit">Community Partners</div><div class="slabel">Local builders, landscape designers, Edventure Frome, the Frome Community Farm, and independent makers we collaborate with regularly.</div></div>
+  <div class="sblock"><div class="snum">&pound;0</div><div class="sunit">VC Funding</div><div class="slabel">Entirely self-funded, community-supported. No outside pressure to grow beyond what is right for the place and the people.</div></div>
+  <div class="shero"><div class="snum">100%</div><div class="sunit">FSC Certified or Reclaimed Timber</div><div class="slabel">Every piece of wood Valley uses comes with a chain of custody. No exceptions. We will not compromise on this.</div></div>
+</section>
+
+<section id="s07">
+  <div class="sl">
+    <span class="label" style="color:rgba(245,237,214,.45);">Community &middot; Sustainability</span>
+    <h1 style="margin-top:1rem;">The<br>Repair<br>Ethic</h1>
+    <p>Frome&rsquo;s Repair Caf&eacute; has fixed over 2,000 objects since it started &mdash; bikes, clothes, electronics, furniture. The point isn&rsquo;t merely fixing things. It&rsquo;s changing the relationship people have with their possessions. From consumer to custodian.</p>
+    <p>Valley shares that instinct. Before we build new, we ask: can this be repaired? Adapted? Preserved? Sometimes the most radical act is not making something new.</p>
+    <p>When Edventure Frome needed new workshop benches, we didn&rsquo;t build from scratch. We salvaged old school workbenches, stripped them, re-topped them in solid oak, and fitted new vices. Total cost: 40% of new. Character: immeasurable. The benches now carry two histories instead of one.</p>
+  </div>
+  <div class="sr">
+    <span class="label" style="opacity:.4;">Valley&rsquo;s Three Principles</span>
+    <div class="principle" style="margin-top:1.5rem;"><div class="ptitle">Repair First</div><div class="pdesc">Before building new, always ask whether the existing thing can be saved. Most of the time it can, with less effort than you expect.</div></div>
+    <div class="principle"><div class="ptitle">Reclaim Second</div><div class="pdesc">Use salvaged, reclaimed, or surplus material before ordering virgin stock. The character is always better. The carbon footprint is always lower.</div></div>
+    <div class="principle"><div class="ptitle">Build to Last</div><div class="pdesc">If we are making something new, we make it to outlast us. Proper joinery, proper timber, proper care. No flat-pack logic. No scheduled obsolescence.</div></div>
+  </div>
+</section>
+
+<section id="s08" class="spread">
+  <div class="ghost">08</div>
+  <span class="label" style="color:rgba(245,237,214,.35);">Ancient Roads &middot; New Roots</span>
+  <span class="pq-open">&ldquo;</span>
+  <blockquote class="pq">A railway sleeper carried freight across Britain for sixty years. Now it holds your tomatoes three feet above the earth. That&rsquo;s not repurposing&nbsp;&mdash; that&rsquo;s respect.</blockquote>
+  <div class="pq-attr">Valley Workshop &nbsp;&middot;&nbsp; Frome, Somerset &nbsp;&middot;&nbsp; 2026</div>
+</section>
+
+<section id="s09" class="spread">
+  <div class="sidebar">
+    <span class="label" style="color:rgba(58,37,24,.5);">Grow &middot; Spring 2026</span>
+    <h1 style="margin-top:1rem;">Let Plants<br>Work<br>Together</h1>
+    <p class="sub">Companion planting is one of the oldest tools a grower has. Pair the right plants and they protect each other, fix nitrogen, attract beneficials, and keep pests confused. Your sleeper bed is the perfect canvas.</p>
+    <p class="sub" style="margin-top:1rem;">The logic holds everywhere: diversity above ground mirrors diversity below. A monoculture is fragile. A mixed system is resilient. Same principle as the Frome independent economy. Same principle as Valley&rsquo;s workshop.</p>
+  </div>
+  <div>
+    <div class="label" style="color:rgba(58,37,24,.5); margin-bottom:1rem;">Classic Pairings for a Sleeper Bed</div>
+    <div class="cpairs">
+      <div class="cprow"><span class="cpplant">Tomatoes</span><span class="cpsep">+</span><div class="cpwhy"><strong>Basil</strong>Basil repels aphids and whitefly. Both benefit &mdash; the basil grows better near tomatoes and the tomatoes taste better near basil.</div></div>
+      <div class="cprow"><span class="cpplant">Courgettes</span><span class="cpsep">+</span><div class="cpwhy"><strong>Nasturtiums</strong>Nasturtiums act as a sacrificial trap crop &mdash; blackfly colonise them rather than the courgette stems. Also edible, also beautiful.</div></div>
+      <div class="cprow"><span class="cpplant">French Beans</span><span class="cpsep">+</span><div class="cpwhy"><strong>Marigolds</strong>Tagetes marigold roots exude a compound that deters soil nematodes. Beans fix nitrogen; marigolds protect it.</div></div>
+      <div class="cprow"><span class="cpplant">Kale</span><span class="cpsep">+</span><div class="cpwhy"><strong>Dill</strong>Dill attracts hoverflies and parasitic wasps that prey on cabbage whitefly and aphids. One dill plant does the work of a pesticide application.</div></div>
+      <div class="cprow"><span class="cpplant">Salad Leaves</span><span class="cpsep">+</span><div class="cpwhy"><strong>Chives</strong>Chives deter slugs &mdash; a genuine problem in Somerset raised beds. Both prefer similar growing conditions.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="s10" class="spread">
+  <div>
+    <span class="label" style="color:rgba(216,255,79,.55);">Vision &middot; 2026 &amp; Beyond</span>
+    <h1 style="margin-top:1rem;">Where <span class="acc">Valley</span><br>Is Going</h1>
+    <p class="sub">We&rsquo;re not trying to grow fast. We&rsquo;re trying to grow well. Here&rsquo;s what&rsquo;s coming in the next twelve months in Frome and beyond.</p>
+  </div>
+  <ul class="vlist">
+    <li><span class="varrow">&rarr;</span><div><strong>Community Workshop Space</strong><br>A permanent workshop open to all in Frome, where local people can learn joinery, furniture repair, and hand-tool woodworking. Opening Autumn 2026. Sliding-scale pricing. No prior experience needed.</div></li>
+    <li><span class="varrow">&rarr;</span><div><strong>Food Forest Partnership</strong><br>Building infrastructure for Frome Community Farm&rsquo;s new food forest &mdash; paths, tool stores, polytunnel frames, raised beds &mdash; in locally sourced timber.</div></li>
+    <li><span class="varrow">&rarr;</span><div><strong>Schools Programme</strong><br>Bringing woodworking back into two local primary schools, with a simple toolkit and curriculum developed with teachers. Hands, heads, hearts. The full child.</div></li>
+    <li><span class="varrow">&rarr;</span><div><strong>Valley Tool Library</strong><br>A community lending library for woodworking tools. Anyone who wants to start a project can access good tools without buying new.</div></li>
+    <li><span class="varrow">&rarr;</span><div><strong>This Magazine, Every Month</strong><br>Seasonal, educational, community-rooted. Spring, summer, autumn, winter &mdash; a different rhythm, a different project, a different story from the Frome valley. Free. Always.</div></li>
+  </ul>
+</section>
+
+<footer id="colophon">
+  <div class="col-grid">
+    <div>
+      <div class="col-logo">Valley</div>
+      <div class="col-tag">Wood &middot; Season &middot; Soul</div>
+      <p class="col-desc">Valley is a woodworking collective and community project based in Frome, Somerset. We make things from wood &mdash; planters, furniture, structures, and tools &mdash; with a strong commitment to sustainability, local sourcing, and community benefit. This magazine is published monthly and is always free.</p>
+    </div>
+    <div>
+      <div class="col-h">This Issue</div>
+      <p class="col-p">Spring 2026<br>April 21, 2026<br>Volume I, Issue 1<br><br>Frome, Somerset, UK<br><a href="https://kevhimself.github.io/webserver/magazines/">All Issues</a></p>
+    </div>
+    <div>
+      <div class="col-h">Get Involved</div>
+      <p class="col-p"><a href="mailto:hello@valleywood.co.uk">hello@valleywood.co.uk</a><br><br>Set in Fraunces &amp; Inter.<br>Published on GitHub Pages.</p>
+    </div>
+  </div>
+  <div class="next">
+    <span class="next-lbl">Next Issue</span>
+    <span class="next-title">Summer 2026 &mdash; Building Outdoor Furniture &middot; Preserving the Harvest &middot; Frome Festival &middot; Cold-Frame Season</span>
+  </div>
+</footer>
+
+</body>
+</html>
