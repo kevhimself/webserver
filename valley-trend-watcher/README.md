@@ -36,15 +36,32 @@ config files here, researches the week, and writes the brief into Notion.
 | `config/voice.md` | Voice and claims rules, drawn from the Valley Voice Guide. Governs every caption. |
 | `prompts/weekly-brief.md` | What the watcher does each Monday. |
 
-## Setup — one thing still to do
+## Setup — the one thing that still blocks it
 
-**The Routine needs the Notion connector attached, and a human has to do it.** A
-Routine created from inside a Claude Code session can't carry connector grants.
-Until it's attached, the Monday session falls back to writing the brief into
-`briefs/` in this repo and says so.
+**The Routine needs the Notion connector attached, and only a human can do it.**
 
-Open the Routine **Valley Sawmills — weekly trend brief** in claude.ai settings
-and attach **Notion**. Takes a minute.
+This is not theoretical. The first scheduled run fired on 28 September 2026,
+reported success, ran for three minutes and about £0.70 of usage, and **filed
+nothing anywhere**. Its session had no Notion tools and no repo checkout, so it
+researched the week and had nowhere to put the answer.
+
+Two causes, one fixable from here:
+
+1. **No Notion connector.** A Routine created from inside a Claude Code session
+   can't carry connector grants, and the API refuses to attach them. Open the
+   Routine **Valley Sawmills — weekly trend brief** in claude.ai settings and
+   attach **Notion**. A minute's work, and nothing else matters until it's done.
+2. **No repo source on the Routine**, so the fired session can't read these
+   config files or push a fallback brief. The scheduling API doesn't expose
+   source attachment either.
+
+**What's been done about it:** the Routine's prompt is now fully self-contained.
+It carries the seasonal calendar, the watchlist, the signal map, the voice and
+claims rules and the social plan inline, so it works with no repo at all. The
+files here stay the maintained source, and the prompt says to prefer them when a
+checkout exists. The fallback chain is now Notion, then publish as an artifact
+and send the link, then put the brief in the reply. It should never again finish
+a run with the brief nowhere.
 
 ## Free versus paid, as it actually stands
 
