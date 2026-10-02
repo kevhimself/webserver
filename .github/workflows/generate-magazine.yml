@@ -39,9 +39,7 @@ jobs:
             echo "new_issue=false" >> $GITHUB_OUTPUT
           else
             DATE=$(date +%Y-%m-%d)
-            git commit -m "Auto-publish ${DATE} Valley Magazine issue
-
-Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>"
+            git commit -m "$(printf 'Auto-publish %s Valley Magazine issue\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>' "$DATE")"
             git push origin main
             echo "new_issue=true" >> $GITHUB_OUTPUT
           fi
@@ -79,8 +77,6 @@ Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>"
           if git diff --cached --quiet; then
             echo "Already in sync — nothing to push."
           else
-            git commit -m "Valley Magazine — sync ${DATE} issue to external
-
-Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>"
+            git commit -m "$(printf 'Valley Magazine — sync %s issue to external\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>' "$DATE")"
             git push origin main
           fi
