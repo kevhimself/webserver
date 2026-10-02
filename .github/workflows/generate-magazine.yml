@@ -45,11 +45,15 @@ jobs:
           fi
 
       # ── Deploy to Cloudflare via valley-sawmills/valley-apps ──────────────
-      # Requires VALLEY_APPS_TOKEN secret (GitHub PAT, write access to valley-apps)
-      # Cloudflare watches valley-sawmills/valley-apps and auto-deploys on push.
+      # Requires VALLEY_APPS_TOKEN secret (GitHub PAT, write access to valley-apps).
+      # Steps below are skipped gracefully if the secret is not set.
+      # Once kevhimself/webserver is transferred to valley-sawmills, switch to
+      # GITHUB_TOKEN and remove the token: line.
 
       - name: Checkout valley-apps (external customer node)
-        if: steps.commit.outputs.new_issue == 'true' || github.event_name == 'workflow_dispatch'
+        if: >
+          (steps.commit.outputs.new_issue == 'true' || github.event_name == 'workflow_dispatch')
+          && secrets.VALLEY_APPS_TOKEN != ''
         uses: actions/checkout@v4
         with:
           repository: valley-sawmills/valley-apps
@@ -58,7 +62,9 @@ jobs:
           ref: main
 
       - name: Sync magazine files and wrangler config to valley-apps
-        if: steps.commit.outputs.new_issue == 'true' || github.event_name == 'workflow_dispatch'
+        if: >
+          (steps.commit.outputs.new_issue == 'true' || github.event_name == 'workflow_dispatch')
+          && secrets.VALLEY_APPS_TOKEN != ''
         run: |
           mkdir -p valley-apps/external/public/magazine
           cp magazines/*.html valley-apps/external/public/magazine/
@@ -67,7 +73,9 @@ jobs:
           fi
 
       - name: Commit and push to valley-apps (triggers Cloudflare deploy)
-        if: steps.commit.outputs.new_issue == 'true' || github.event_name == 'workflow_dispatch'
+        if: >
+          (steps.commit.outputs.new_issue == 'true' || github.event_name == 'workflow_dispatch')
+          && secrets.VALLEY_APPS_TOKEN != ''
         run: |
           cd valley-apps
           git config user.name  "Valley Magazine Bot"
