@@ -59,20 +59,13 @@ Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>"
           path: valley-apps
           ref: main
 
-      - name: Sync magazine files to external/public/magazine/
+      - name: Sync magazine files and wrangler config to valley-apps
         if: steps.commit.outputs.new_issue == 'true' || github.event_name == 'workflow_dispatch'
         run: |
           mkdir -p valley-apps/external/public/magazine
           cp magazines/*.html valley-apps/external/public/magazine/
-          # Write wrangler.toml if it doesn't exist (tells Cloudflare how to serve static assets)
           if [ ! -f valley-apps/external/wrangler.toml ]; then
-            cat > valley-apps/external/wrangler.toml <<'WRANGLER'
-          name = "valley-external"
-          compatibility_date = "2024-01-01"
-
-          [assets]
-          directory = "./public"
-          WRANGLER
+            printf 'name = "valley-external"\ncompatibility_date = "2024-01-01"\n\n[assets]\ndirectory = "./public"\n' > valley-apps/external/wrangler.toml
           fi
 
       - name: Commit and push to valley-apps (triggers Cloudflare deploy)
