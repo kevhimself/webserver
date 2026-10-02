@@ -48,7 +48,7 @@ Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>"
 
       # ── Deploy to Cloudflare via valley-sawmills/valley-apps ──────────────
       # Requires VALLEY_APPS_TOKEN secret (GitHub PAT, write access to valley-apps)
-      # Cloudflare Pages watches valley-sawmills/valley-apps and auto-deploys on push.
+      # Cloudflare watches valley-sawmills/valley-apps and auto-deploys on push.
 
       - name: Checkout valley-apps (external customer node)
         if: steps.commit.outputs.new_issue == 'true' || github.event_name == 'workflow_dispatch'
@@ -64,15 +64,25 @@ Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>"
         run: |
           mkdir -p valley-apps/external/public/magazine
           cp magazines/*.html valley-apps/external/public/magazine/
+          # Write wrangler.toml if it doesn't exist (tells Cloudflare how to serve static assets)
+          if [ ! -f valley-apps/external/wrangler.toml ]; then
+            cat > valley-apps/external/wrangler.toml <<'WRANGLER'
+          name = "valley-external"
+          compatibility_date = "2024-01-01"
 
-      - name: Commit and push to valley-apps (triggers Cloudflare Pages deploy)
+          [assets]
+          directory = "./public"
+          WRANGLER
+          fi
+
+      - name: Commit and push to valley-apps (triggers Cloudflare deploy)
         if: steps.commit.outputs.new_issue == 'true' || github.event_name == 'workflow_dispatch'
         run: |
           cd valley-apps
           git config user.name  "Valley Magazine Bot"
           git config user.email "noreply@github.com"
           DATE=$(date +%Y-%m-%d)
-          git add external/public/magazine/
+          git add external/
           if git diff --cached --quiet; then
             echo "Already in sync — nothing to push."
           else
