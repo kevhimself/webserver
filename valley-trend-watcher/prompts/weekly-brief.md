@@ -24,6 +24,9 @@ Read these from `kevhimself/webserver`, branch
   whether we can serve it
 - `config/shows.md` — the watchlist, weighted to mainstream reach
 - `config/social-sources.md` — YouTube, Instagram and the weather feed
+- `config/local-planning.md` — Selwood Garden Community, the self-build
+  registers and the monthly planning lists. Monthly check, except a major
+  approval, which is a same-week flag
 - `config/signal-map.md` — moment to product
 - `config/social-plan.md` — how Valley actually posts: Facebook first, the three
   pillars, the posting days, and the two local rings
@@ -138,7 +141,17 @@ What's coming in the next two to six weeks, seasonal turns included. This is
 where the advantage is: knowing in September what October needs.
 
 ### Sources
-Links.
+Links. But the inline links in the body are what Kev actually uses: this list is
+the backstop, not the delivery mechanism.
+
+## Sourcing rules for the brief
+- **Link every factual claim inline**, on the words themselves. Not parked in the
+  sources list.
+- **Name the channel and slot** for television: "Amazing Spaces, Channel 4,
+  Fridays 8pm".
+- **Name the publication** for a design or trend claim: Dezeen, Elle Decoration,
+  Grand Designs Magazine, ArchDaily. It tells Kev how much weight to give it.
+- **Label a seller's blog as marketing.** A retailer's trend post is not Dezeen.
 
 ## Step 6 — report back
 Reply with the headline signal, the top action, and the Notion link. Three lines.

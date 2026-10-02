@@ -58,9 +58,16 @@ usually lands in the others.
 These are **not** customers. They're a reading of what our own customers will
 want next.
 
-**The core comparators:** Totnes, Stroud, Hebden Bridge, Lewes, Glastonbury,
-Hay-on-Wye, Todmorden, Machynlleth, Ashburton, Crickhowell, Forest Row, Bungay.
-Plus the independent pockets of Bristol (Bedminster, Totterdown) and Bath.
+**The core comparators:** **Bruton**, Totnes, Stroud, Hebden Bridge, Lewes,
+Glastonbury, Hay-on-Wye, Todmorden, Machynlleth, Ashburton, Crickhowell, Forest
+Row, Bungay. Plus the independent pockets of Bristol (Bedminster, Totterdown)
+and Bath.
+
+**Bruton is the closest and arguably the most useful.** Ten miles away, and
+since Hauser & Wirth Somerset it has pulled in a design-led, moneyed, London-
+adjacent crowd on top of its own maker culture. What lands in Bruton is both an
+early signal and an actual addressable market, which makes it the one comparator
+that is also a catchment town.
 
 **What to watch in them:**
 
@@ -81,7 +88,14 @@ nothing to read.
 Frome is itself one of these towns, so this is also about not being last in our
 own category.
 
-## Layer 5 — Regulation and structural change
+## Layer 5 — Local planning and house building
+
+See `local-planning.md`. The slowest layer and the largest in pounds: 1,700
+homes approved on the edge of Frome, the self-build registers, and the monthly
+planning lists. Checked monthly, except a major approval, which is a same-week
+flag.
+
+## Layer 6 — Regulation and structural change
 
 Slow, unglamorous, and the biggest mover of all. Worth a check monthly rather
 than weekly.
@@ -96,7 +110,7 @@ than weekly.
 - **Energy costs.** The single biggest driver of firewood demand, and it moves
   with the price cap announcements.
 
-## Layer 6 — Weather and climate
+## Layer 7 — Weather and climate
 
 Met Office warnings for the fast signal, seasonal outlooks for the slow one. A
 cold winter forecast is a firewood stocking decision. See `social-sources.md`.
@@ -108,6 +122,8 @@ cold winter forecast is a firewood stocking decision. See `social-sources.md`.
 2. **Comparator towns tell us when it's arriving.** A thing showing up in Totnes
    and Stroud is close.
 3. **Local and weather tell us what to do this week.**
+4. **Planning and regulation tell us what to build the business around**, over
+   years rather than weeks.
 
 A trend we spot globally but can't serve is still worth recording. A trend
 already visible in Frome is late.

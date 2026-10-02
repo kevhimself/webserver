@@ -65,6 +65,7 @@ config files here, researches the week, and writes the brief into Notion.
 | File | What it controls |
 | --- | --- |
 | `config/seasonal-calendar.md` | The demand calendar. Outranks everything else. |
+| `config/local-planning.md` | Selwood Garden Community, self-build registers, the monthly planning lists, and the rule on not naming individuals. |
 | `config/where-we-look.md` | Where trends are sourced: global, national, platform, comparator towns, regulation, weather. |
 | `config/shows.md` | The watchlist, weighted to mainstream reach, plus the 60-mile catchment. |
 | `config/social-sources.md` | YouTube, Instagram and the Met Office feed, with their real limits. |

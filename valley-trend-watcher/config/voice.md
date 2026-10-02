@@ -99,6 +99,21 @@ Instagram, three or four, including a local one.
 **Every post maps to one of the three pillars:** proof it's reliable and ready,
 trust and story, or ease of buying. Say which. See `social-plan.md`.
 
+## Sourcing: link everything, name the channel
+
+This applies to the brief itself, not the captions.
+
+- **Every factual claim carries an inline link** to where it came from, on the
+  words themselves rather than parked in a footnote. If Kev has to scroll to the
+  sources list to check something, the link is in the wrong place.
+- **Name the channel and the slot** for anything on television: "Amazing Spaces,
+  Channel 4, Fridays 8pm", not "Amazing Spaces".
+- **Name the publication** for a design or trend claim: "Dezeen", "Elle
+  Decoration", "Grand Designs Magazine", "ArchDaily". It tells Kev how much
+  weight to give it, and a retailer's blog is not the same as Dezeen.
+- **Say which it is** when a source is a seller: retailer and manufacturer blogs
+  are marketing, and should be labelled so.
+
 ## The two copy tests
 
 1. Would someone at Valley actually say this to a customer at the counter? If
