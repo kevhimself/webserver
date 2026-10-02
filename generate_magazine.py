@@ -91,11 +91,10 @@ def season_projects(s: str) -> list:
     }.get(s, [])
 
 
-def issue_number(d: date) -> str:
-    start = date(2026, 4, 1)
-    q = (d.year - start.year) * 4 + (d.month - 1) // 3 - (start.month - 1) // 3
+def issue_number(d: date, s: str) -> str:
+    vol = d.year - 2026 + 1  # 2026→I, 2027→II, etc.
     nums = ['I','II','III','IV','V','VI','VII','VIII','IX','X']
-    return f"Vol. {nums[min(q // 4, 9)]}, No. {q % 4 + 1}"
+    return f"Vol. {nums[min(vol-1, 9)]}, {s} ‘{str(d.year)[2:]}"
 
 
 def humandate(d: date) -> str:
@@ -105,7 +104,7 @@ def humandate(d: date) -> str:
 def generate_html(d: date) -> str:
     s = season(d)
     c = season_colors(s)
-    iss = issue_number(d)
+    iss = issue_number(d, s)
     hdate = humandate(d)
     return f"""<!DOCTYPE html>
 <html lang=\"en\">
@@ -200,7 +199,7 @@ def main():
         return
 
     s = season(TODAY)
-    iss = issue_number(TODAY)
+    iss = issue_number(TODAY, s)
     print(f"Generating {s} {TODAY.year} issue ({iss}) -> {FILENAME}")
 
     with open(OUTPATH, "w") as f:
