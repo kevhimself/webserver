@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Home Energy, Godalming</title>
+<meta name="description" content="Kev and Jules's 1976 house in Godalming, Surrey: solar, battery and smart tariff, shared openly with live data from Home Assistant.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root {
+    --ink: #00433d;
+    --forest: #1d391e;
+    --lime: #d8ff4f;
+    --paper: #f7f6f1;
+    --card: #ffffff;
+    --muted: #5f6b66;
+    --line: #e2e4dc;
+    --solar: #e8a317;
+    --grid: #5b6f9e;
+    --export: #2e9e6a;
+    --battery: #00433d;
+    --load: #9a4b3c;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    font-family: 'Merriweather', Georgia, serif;
+    background: var(--paper);
+    color: #23302c;
+    line-height: 1.65;
+  }
+  h1, h2, h3, .num, nav, .label, .pill, table, button {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  a { color: var(--ink); }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+  /* Header */
+  header.hero {
+    background: var(--forest);
+    color: #eef3ea;
+    padding: 56px 0 44px;
+  }
+  .hero .eyebrow {
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    font-size: 12px;
+    color: var(--lime);
+    margin: 0 0 12px;
+  }
+  .hero h1 {
+    font-size: clamp(30px, 5vw, 48px);
+    line-height: 1.1;
+    margin: 0 0 16px;
+    color: #fff;
+    letter-spacing: -0.01em;
+  }
+  .hero p.lede { max-width: 680px; font-size: 17px; font-weight: 300; margin: 0; }
+  .status {
+    margin-top: 22px;
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'Inter', sans-serif; font-size: 13px;
+    background: rgba(255,255,255,.08); padding: 6px 12px; border-radius: 999px;
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--lime); }
+  .dot.stale { background: #f0b04a; }
+
+  nav.sections {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--paper); border-bottom: 1px solid var(--line);
+  }
+  nav.sections .wrap { display: flex; gap: 20px; overflow-x: auto; padding-top: 12px; padding-bottom: 12px; }
+  nav.sections a { text-decoration: none; font-size: 14px; font-weight: 500; white-space: nowrap; color: var(--ink); }
+
+  section { padding: 44px 0 8px; }
+  h2 { font-size: 26px; color: var(--ink); margin: 0 0 6px; letter-spacing: -0.01em; }
+  .sub { color: var(--muted); margin: 0 0 22px; max-width: 720px; }
+
+  .grid { display: grid; gap: 14px; }
+  .tiles { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px;
+  }
+  .label { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 0 0 6px; }
+  .num { font-size: 30px; font-weight: 700; color: var(--ink); line-height: 1.1; }
+  .num small { font-size: 15px; font-weight: 500; color: var(--muted); margin-left: 2px; }
+  .note { font-size: 13px; color: var(--muted); margin-top: 6px; }
+  .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: middle; }
+
+  .battery-bar { height: 10px; background: #eef0ea; border-radius: 6px; overflow: hidden; margin-top: 10px; }
+  .battery-bar span { display: block; height: 100%; background: var(--battery); }
+
+  .pill { display: inline-block; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; }
+  .pill.cheap { background: #e3f4ea; color: #1d6b45; }
+  .pill.standard { background: #eef0f6; color: #3f4f78; }
+  .pill.peak { background: #fbe9e4; color: #9a3b26; }
+
+  .chart-card { padding: 18px 18px 10px; }
+  .chart-box { position: relative; height: 300px; }
+  .chart-box.short { height: 220px; }
+
+  .two { grid-template-columns: 1.3fr 1fr; }
+  @media (max-width: 820px) { .two { grid-template-columns: 1fr; } }
+
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 500; width: 34%; }
+
+  .explain { border-left: 3px solid var(--lime); background: #fbfdf2; padding: 14px 16px; border-radius: 0 10px 10px 0; margin: 14px 0; }
+  .explain strong { font-family: 'Inter', sans-serif; color: var(--ink); }
+
+  ol.timeline { list-style: none; padding: 0; margin: 0; }
+  ol.timeline li { position: relative; padding: 0 0 22px 26px; border-left: 2px solid var(--line); margin-left: 6px; }
+  ol.timeline li::before { content: ""; position: absolute; left: -7px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--lime); border: 2px solid var(--ink); }
+  ol.timeline .when { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; color: var(--ink); }
+
+  .flow { font-family: 'Inter', sans-serif; font-size: 14px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .flow span.node { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; }
+  .flow span.arrow { color: var(--muted); }
+
+  footer { margin-top: 48px; background: var(--forest); color: #cfdacb; padding: 32px 0; font-size: 14px; }
+  footer a { color: var(--lime); }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Open home energy · Godalming, Surrey</p>
+    <h1>Our 1976 house, run on sunshine, a battery and cheap hours</h1>
+    <p class="lede">We're Kev and Jules. Our house sits near Sainsbury's in Godalming. This page shows how its solar panels, battery and smart tariff are doing, straight from our Home Assistant, and what we've learned setting it up. Borrow anything that's useful.</p>
+    <div class="status"><span class="dot" id="statusDot"></span><span id="statusText">Loading the latest data…</span></div>
+  </div>
+</header>
+
+<nav class="sections">
+  <div class="wrap">
+    <a href="#now">Right now</a>
+    <a href="#today">Today</a>
+    <a href="#month">Last 30 days</a>
+    <a href="#tariff">How the tariff works</a>
+    <a href="#system">The system</a>
+    <a href="#learned">What we've learned</a>
+    <a href="#how">How this page works</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <section id="now">
+    <h2>Right now</h2>
+    <p class="sub">A snapshot from the last update. Home Assistant sends a summary every few hours, so this isn't second by second.</p>
+    <div class="grid tiles">
+      <div class="card">
+        <p class="label"><span class="swatch" style="background:var(--solar)"></span>Solar</p>
+        <div class="num" id="nowSolar">–</div>
+        <p class="note">Coming off the roof</p>
+      </div>
+      <div class="card">
+        <p class="label"><span class="swatch" style="background:var(--load)"></span>House using</p>
+        <div class="num" id="nowLoad">–</div>
+        <p class="note">Everything switched on</p>
+      </div>
+      <div class="card">
+        <p class="label"><span class="swatch" style="background:var(--grid)"></span>Grid</p>
+        <div class="num" id="nowGrid">–</div>
+        <p class="note" id="nowGridNote">Import or export</p>
+      </div>
+      <div class="card">
+        <p class="label"><span class="swatch" style="background:var(--battery)"></span>Battery</p>
+        <div class="num" id="nowSoc">–</div>
+        <div class="battery-bar"><span id="socBar" style="width:0%"></span></div>
+        <p class="note" id="nowBatt">9.5 kWh battery</p>
+      </div>
+      <div class="card">
+        <p class="label">Price now</p>
+        <div class="num" id="nowRate">–</div>
+        <p class="note"><span class="pill" id="nowWindow">–</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="today">
+    <h2>Today so far</h2>
+    <p class="sub" id="todaySub">Totals since midnight.</p>
+    <div class="grid tiles">
+      <div class="card"><p class="label">Solar made</p><div class="num" id="tSolar">–</div><p class="note" id="tSolarNote"></p></div>
+      <div class="card"><p class="label">House used</p><div class="num" id="tLoad">–</div></div>
+      <div class="card"><p class="label">Bought from grid</p><div class="num" id="tImport">–</div></div>
+      <div class="card"><p class="label">Sold to grid</p><div class="num" id="tExport">–</div></div>
+      <div class="card"><p class="label">Battery in / out</p><div class="num" id="tBatt">–</div></div>
+      <div class="card"><p class="label">Solar tomorrow</p><div class="num" id="tTomorrow">–</div><p class="note">Forecast</p></div>
+    </div>
+  </section>
+
+  <section id="month">
+    <h2>The last 30 days</h2>
+    <p class="sub">Daily totals. October is when solar falls away: around 1 to 5 kWh a day here, against 15 or more on a good June day.</p>
+    <div class="grid two">
+      <div class="card chart-card">
+        <div class="chart-box"><canvas id="dailyChart" aria-label="Daily solar, grid import and house use"></canvas></div>
+      </div>
+      <div class="grid" style="grid-template-columns:1fr 1fr; align-content:start;">
+        <div class="card"><p class="label">Solar</p><div class="num" id="mSolar">–</div><p class="note">Over the period shown</p></div>
+        <div class="card"><p class="label">House used</p><div class="num" id="mLoad">–</div></div>
+        <div class="card"><p class="label">From the grid</p><div class="num" id="mImport">–</div></div>
+        <div class="card"><p class="label">Solar share</p><div class="num" id="mShare">–</div><p class="note">Of what the house used</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tariff">
+    <h2>How the tariff works</h2>
+    <p class="sub">We're on Octopus Flux. The price changes three times a day, for buying and for selling.</p>
+    <div class="grid two">
+      <div class="card chart-card">
+        <div class="chart-box short"><canvas id="tariffChart" aria-label="Flux import and export prices through the day"></canvas></div>
+      </div>
+      <div class="card">
+        <table>
+          <tr><th>2am to 5am</th><td><span class="pill cheap">Cheap</span> buy 16.1p, sell 4.7p</td></tr>
+          <tr><th>4pm to 7pm</th><td><span class="pill peak">Peak</span> buy 37.2p, sell 30.2p</td></tr>
+          <tr><th>The rest</th><td><span class="pill standard">Standard</span> buy 26.7p, sell 11.1p</td></tr>
+        </table>
+        <p class="note">Southern England rates, October 2026, including VAT.</p>
+      </div>
+    </div>
+    <div class="explain">
+      <strong>Why this suits a battery.</strong> The battery can only charge or discharge at 3 kW, so in the three cheap hours it takes in about 9 kWh, which is almost exactly a full battery. That stored power then runs the house through the day and, most importantly, from 4pm to 7pm, when buying is at its dearest. On a sunny day there's less to buy, so the planner leaves room for the solar instead.
+    </div>
+    <div class="explain">
+      <strong>Who decides.</strong> A free planner called Predbat runs in Home Assistant. Every few minutes it looks at prices, the solar forecast and how much we usually use, then decides how full to charge overnight. When Octopus offers a free hour, we tell Predbat that hour costs 0p and it fills the battery then.
+    </div>
+  </section>
+
+  <section id="system">
+    <h2>The system</h2>
+    <p class="sub">Fitted in April 2023. The panels and battery are two separate systems that meet on the house wiring.</p>
+    <div class="grid two">
+      <div class="card">
+        <table>
+          <tr><th>House</th><td>Built 1976, Godalming, Surrey. Gas boiler for heating and hot water.</td></tr>
+          <tr><th>Solar panels</th><td>9 × 420 W (3.78 kWp): 6 facing east, 3 facing south. Some shade from a tree line.</td></tr>
+          <tr><th>Panel optimisers</th><td>SolarEdge, one per panel, so a shaded panel doesn't drag the rest down.</td></tr>
+          <tr><th>Solar inverter</th><td>SolarEdge HD-Wave, 3.68 kW.</td></tr>
+          <tr><th>Battery</th><td>GivEnergy 9.5 kWh with a 3 kW AC charger.</td></tr>
+          <tr><th>Hot water</th><td>Cylinder heated by the gas boiler, a SolarEdge solar diverter (summer only) and a Heata unit, a computer server whose waste heat warms the water.</td></tr>
+          <tr><th>Tariff</th><td>Octopus Flux for buying and selling.</td></tr>
+          <tr><th>Brain</th><td>Home Assistant on a Home Assistant Green, with Predbat planning the battery.</td></tr>
+          <tr><th>Solar per year</th><td>About 3,000 kWh, nearly all of it March to September.</td></tr>
+        </table>
+      </div>
+      <div>
+        <div class="explain">
+          <strong>What "AC-coupled" means here.</strong> The solar inverter turns the panels' power into normal mains electricity and feeds the house. The battery has its own charger, which watches the meter: when the house is sending power out to the grid, it soaks that up instead. So the battery never "sees" the panels directly. That made it easy to add a battery without replacing the solar kit, at the cost of two apps and a 3 kW limit.
+        </div>
+        <div class="explain">
+          <strong>Why the diverter only runs on a timer.</strong> A solar diverter is meant to send spare solar into the hot water tank. Ours has no meter to see when there's spare, so it just runs a short boost at midday in summer and is switched off in winter, when the boiler does the work.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="learned">
+    <h2>What we've learned</h2>
+    <p class="sub">The useful bits from setting this up in autumn 2026, in case they save someone else the trouble.</p>
+    <ol class="timeline">
+      <li><div class="when">The battery was charging every night for nothing</div>On a flat-rate tariff, the battery maker's cloud was filling it from the grid each night. Same price day and night, so that only lost 10–15% in charging losses and wore the battery. Lesson: find out what's controlling your battery, and allow only one controller.</li>
+      <li><div class="when">One wrong setting cost 20 hours of grid charging</div>The battery's "reserve" got set to 67% by mistake, so it topped itself up from the grid to stay there. We added an alert for when the reserve or grid charging goes outside what we expect.</li>
+      <li><div class="when">Read the panels locally, not through the cloud</div>The solar installer couldn't give us access to the online data, so Home Assistant reads the inverter directly over the home network (Modbus). It's faster and doesn't depend on anyone's servers.</li>
+      <li><div class="when">A time-of-use tariff is what makes a battery pay</div>On a flat price, a battery only stores solar. Once prices vary through the day, it can buy cheap at night and avoid the expensive evening hours. We moved to Octopus Flux in October 2026 and switched Predbat from watching to controlling.</li>
+      <li><div class="when">Two controllers can share, carefully</div>We earn from grid "events" through Axle Energy, which can take over the battery for an hour when the grid is stretched. We set Axle to events only, so Predbat runs the battery the rest of the time, and we log every event to spot any clashes.</li>
+      <li><div class="when">Free and cheap hours are worth planning for</div>Octopus sometimes offers free electricity for an hour. We tell Predbat that hour is free so it fills the battery, and run the dishwasher, washing and cooking in it.</li>
+      <li><div class="when">Understanding beats labels</div>Knowing how something works ("Eco washes run cooler for longer, because heating water is what costs") makes the right choice obvious. We try to explain everything on this page that way.</li>
+    </ol>
+  </section>
+
+  <section id="how">
+    <h2>How this page works</h2>
+    <p class="sub">No server at home is opened to the internet. Home Assistant sends a small summary out; nothing comes back in.</p>
+    <div class="card">
+      <div class="flow">
+        <span class="node">Solar inverter and battery</span><span class="arrow">→</span>
+        <span class="node">Home Assistant (at home)</span><span class="arrow">→ every 3 hours</span>
+        <span class="node">GitHub (stores the history)</span><span class="arrow">→</span>
+        <span class="node">Cloudflare (serves this page)</span>
+      </div>
+      <p class="note" style="margin-top:14px">The page is plain HTML and JavaScript with Chart.js. The data is one JSON file, <a href="data/home.json">data/home.json</a>, which anyone can read.</p>
+    </div>
+    <div class="explain">
+      <strong>What we don't share.</strong> No street address, no account, meter or serial numbers, no live location, and nothing that would let anyone control the house. Just energy totals and a few readings.
+    </div>
+    <div class="explain">
+      <strong>Make your own.</strong> This page was inspired by our friend Tim's <a href="https://norneyfarmbungalow.netlify.app/blog">Open Norney</a>, a forkable record of his off-grid bungalow. The same idea works for any home with Home Assistant: a summary sent out on a timer, a JSON file and one HTML page.
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    Kev and Jules · Godalming, Surrey · Data from our own Home Assistant · <span id="footUpdated"></span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const fmtKwh = (v) => (v === null || v === undefined || isNaN(v)) ? '–' : `${(+v).toFixed(1)}<small>kWh</small>`;
+  const fmtW = (v) => {
+    if (v === null || v === undefined || isNaN(v)) return '–';
+    v = +v;
+    return v >= 1000 ? `${(v / 1000).toFixed(2)}<small>kW</small>` : `${Math.round(v)}<small>W</small>`;
+  };
+
+  // Flux windows (local time): cheap 02-05, peak 16-19, standard otherwise
+  const FLUX = { cheap: { buy: 16.09, sell: 4.70 }, standard: { buy: 26.65, sell: 11.06 }, peak: { buy: 37.20, sell: 30.16 } };
+  function windowFor(hour) {
+    if (hour >= 2 && hour < 5) return 'cheap';
+    if (hour >= 16 && hour < 19) return 'peak';
+    return 'standard';
+  }
+
+  function render(data) {
+    const latest = data.latest || {};
+    const now = latest.now || {};
+    const today = latest.today || {};
+    const fc = latest.forecast || {};
+
+    // Status
+    const ts = latest.ts || data.updated;
+    if (ts) {
+      const t = new Date(ts);
+      const ageH = (Date.now() - t.getTime()) / 36e5;
+      const when = t.toLocaleString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+      $('statusText').textContent = `Last update from the house: ${when}`;
+      $('footUpdated').textContent = `Updated ${when}`;
+      if (ageH > 7) $('statusDot').classList.add('stale');
+    }
+
+    // Right now
+    $('nowSolar').innerHTML = fmtW(now.solar_w);
+    $('nowLoad').innerHTML = fmtW(now.load_w);
+    const imp = +now.import_w || 0, exp = +now.export_w || 0;
+    if (exp > imp) { $('nowGrid').innerHTML = fmtW(exp); $('nowGridNote').textContent = 'Selling to the grid'; }
+    else { $('nowGrid').innerHTML = fmtW(imp); $('nowGridNote').textContent = imp > 0 ? 'Buying from the grid' : 'Not using the grid'; }
+    const soc = now.battery_soc;
+    if (soc !== undefined && soc !== null) {
+      $('nowSoc').innerHTML = `${Math.round(soc)}<small>%</small>`;
+      $('socBar').style.width = `${Math.max(0, Math.min(100, soc))}%`;
+      const bw = +now.battery_w || 0;
+      $('nowBatt').textContent = bw > 50 ? `Charging at ${Math.round(bw)} W` : bw < -50 ? `Running the house at ${Math.round(-bw)} W` : 'Resting · 9.5 kWh battery';
+    }
+    const hour = ts ? new Date(ts).getHours() : new Date().getHours();
+    const win = windowFor(hour);
+    const rate = now.import_rate_p || FLUX[win].buy;
+    $('nowRate').innerHTML = `${(+rate).toFixed(1)}<small>p/kWh</small>`;
+    const pill = $('nowWindow');
+    pill.textContent = win === 'cheap' ? 'Cheap hours' : win === 'peak' ? 'Peak hours' : 'Standard price';
+    pill.className = `pill ${win}`;
+
+    // Today
+    $('tSolar').innerHTML = fmtKwh(today.solar_kwh);
+    if (fc.solar_today_kwh) $('tSolarNote').textContent = `Forecast for the day: ${(+fc.solar_today_kwh).toFixed(1)} kWh`;
+    $('tLoad').innerHTML = fmtKwh(today.load_kwh);
+    $('tImport').innerHTML = fmtKwh(today.import_kwh);
+    $('tExport').innerHTML = fmtKwh(today.export_kwh);
+    if (today.battery_charge_kwh !== undefined) {
+      $('tBatt').innerHTML = `${(+today.battery_charge_kwh).toFixed(1)} / ${(+today.battery_discharge_kwh || 0).toFixed(1)}<small>kWh</small>`;
+    }
+    $('tTomorrow').innerHTML = fmtKwh(fc.solar_tomorrow_kwh);
+
+    // Last 30 days
+    const days = (data.days || []).slice(-30);
+    const labels = days.map(d => new Date(d.date + 'T12:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }));
+    const sum = (k) => days.reduce((a, d) => a + (+d[k] || 0), 0);
+    const sSolar = sum('solar_kwh'), sLoad = sum('load_kwh'), sImport = sum('import_kwh'), sExport = sum('export_kwh');
+    $('mSolar').innerHTML = fmtKwh(sSolar);
+    $('mLoad').innerHTML = fmtKwh(sLoad);
+    $('mImport').innerHTML = fmtKwh(sImport);
+    if (sLoad > 0) $('mShare').innerHTML = `${Math.round(Math.max(0, sSolar - sExport) / sLoad * 100)}<small>%</small>`;
+
+    new Chart($('dailyChart'), {
+      type: 'bar',
+      data: {
+        labels,
+        datasets: [
+          { label: 'Solar', data: days.map(d => d.solar_kwh), backgroundColor: '#e8a317', stack: 'in', borderRadius: 3 },
+          { label: 'Bought from grid', data: days.map(d => d.import_kwh), backgroundColor: '#5b6f9e', stack: 'in', borderRadius: 3 },
+          { label: 'House used', data: days.map(d => d.load_kwh), type: 'line', borderColor: '#9a4b3c', backgroundColor: '#9a4b3c', pointRadius: 2, tension: .3 }
+        ]
+      },
+      options: {
+        maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        plugins: { legend: { position: 'bottom', labels: { font: { family: 'Inter' } } },
+                   tooltip: { callbacks: { label: (c) => `${c.dataset.label}: ${c.parsed.y == null ? '–' : c.parsed.y.toFixed(1)} kWh` } } },
+        scales: { x: { stacked: true, grid: { display: false }, ticks: { font: { family: 'Inter', size: 11 }, maxRotation: 0, autoSkip: true } },
+                  y: { stacked: true, title: { display: true, text: 'kWh a day', font: { family: 'Inter' } }, ticks: { font: { family: 'Inter' } } } }
+      }
+    });
+  }
+
+  function tariffChart() {
+    const hours = [...Array(24).keys()];
+    const nowH = new Date().getHours();
+    new Chart($('tariffChart'), {
+      type: 'bar',
+      data: {
+        labels: hours.map(h => `${String(h).padStart(2, '0')}:00`),
+        datasets: [
+          { label: 'Buy (p/kWh)', data: hours.map(h => FLUX[windowFor(h)].buy),
+            backgroundColor: hours.map(h => h === nowH ? '#00433d' : (windowFor(h) === 'cheap' ? '#7fc59e' : windowFor(h) === 'peak' ? '#d97a62' : '#a9b4cf')) },
+          { label: 'Sell (p/kWh)', data: hours.map(h => FLUX[windowFor(h)].sell), type: 'line', borderColor: '#2e9e6a', pointRadius: 0, stepped: true }
+        ]
+      },
+      options: {
+        maintainAspectRatio: false,
+        plugins: { legend: { position: 'bottom', labels: { font: { family: 'Inter' } } } },
+        scales: { x: { grid: { display: false }, ticks: { font: { family: 'Inter', size: 10 }, maxRotation: 0, autoSkip: true, maxTicksLimit: 8 } },
+                  y: { beginAtZero: true, title: { display: true, text: 'pence per kWh', font: { family: 'Inter' } } } }
+      }
+    });
+  }
+
+  tariffChart();
+  fetch('data/home.json', { cache: 'no-store' })
+    .then(r => r.json())
+    .then(render)
+    .catch(() => { $('statusText').textContent = 'Couldn\'t load the latest data just now.'; $('statusDot').classList.add('stale'); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+name: Home energy page — update and deploy
+
+# Home Assistant sends a "home-energy-push" event with a summary every few hours.
+# This merges it into home-energy/data/home.json, commits, and copies the page to
+# valley-sawmills/valley-apps (external/public/home-energy), which deploys to
+# Cloudflare the same way as Valley Magazine.
+
+on:
+  repository_dispatch:
+    types: [home-energy-push]
+  push:
+    branches: [main]
+    paths:
+      - 'home-energy/**'
+      - '!home-energy/data/home.json'
+  workflow_dispatch:
+
+concurrency:
+  group: home-energy
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout webserver repo
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Merge the Home Assistant summary
+        if: github.event_name == 'repository_dispatch'
+        env:
+          PAYLOAD: ${{ toJson(github.event.client_payload) }}
+        run: |
+          printf '%s' "$PAYLOAD" > /tmp/payload.json
+          python3 scripts/update_home_energy.py /tmp/payload.json
+
+      - name: Commit the new data
+        if: github.event_name == 'repository_dispatch'
+        run: |
+          git config user.name  "Home Energy Bot"
+          git config user.email "noreply@github.com"
+          git add home-energy/data/home.json
+          if git diff --cached --quiet; then
+            echo "No change."
+          else
+            git commit -m "Home energy data update"
+            git pull --rebase origin main
+            git push origin main
+          fi
+
+      # ── Deploy to Cloudflare via valley-sawmills/valley-apps (same route as the magazine) ──
+      - name: Check if VALLEY_APPS_TOKEN is available
+        id: check_token
+        env:
+          TOKEN: ${{ secrets.VALLEY_APPS_TOKEN }}
+        run: |
+          if [ -n "$TOKEN" ]; then
+            echo "available=true" >> $GITHUB_OUTPUT
+          else
+            echo "VALLEY_APPS_TOKEN not set — skipping Cloudflare sync."
+            echo "available=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Checkout valley-apps (external)
+        if: steps.check_token.outputs.available == 'true'
+        uses: actions/checkout@v4
+        with:
+          repository: valley-sawmills/valley-apps
+          token: ${{ secrets.VALLEY_APPS_TOKEN }}
+          path: valley-apps
+          ref: main
+
+      - name: Sync page and data to valley-apps
+        if: steps.check_token.outputs.available == 'true'
+        run: |
+          mkdir -p valley-apps/external/public/home-energy/data
+          cp home-energy/index.html valley-apps/external/public/home-energy/
+          cp home-energy/data/home.json valley-apps/external/public/home-energy/data/
+
+      - name: Commit and push to valley-apps (triggers Cloudflare deploy)
+        if: steps.check_token.outputs.available == 'true'
+        run: |
+          cd valley-apps
+          git config user.name  "Home Energy Bot"
+          git config user.email "noreply@github.com"
+          git add external/public/home-energy
+          if git diff --cached --quiet; then
+            echo "Already in sync."
+          else
+            git commit -m "Home energy page sync"
+            git pull --rebase origin main
+            git push origin main
+          fi
