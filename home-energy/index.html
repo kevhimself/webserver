@@ -352,7 +352,8 @@
       $('nowSoc').innerHTML = `${Math.round(soc)}<small>%</small>`;
       $('socBar').style.width = `${Math.max(0, Math.min(100, soc))}%`;
       const bw = +now.battery_w || 0;
-      $('nowBatt').textContent = bw > 50 ? `Charging at ${Math.round(bw)} W` : bw < -50 ? `Running the house at ${Math.round(-bw)} W` : 'Resting · 9.5 kWh battery';
+      // Predbat battery power: positive = discharging (running the house), negative = charging
+      $('nowBatt').textContent = bw > 50 ? `Running the house at ${Math.round(bw)} W` : bw < -50 ? `Charging at ${Math.round(-bw)} W` : 'Resting · 9.5 kWh battery';
     }
     const hour = ts ? new Date(ts).getHours() : new Date().getHours();
     const win = windowFor(hour);
