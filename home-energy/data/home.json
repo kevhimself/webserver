@@ -1,38 +1,38 @@
 {
- "updated": "2026-11-08T06:55:00+00:00",
+ "updated": "2026-11-08T09:55:00+00:00",
  "source": "Home Assistant",
  "latest": {
-  "ts": "2026-11-08T06:55:00+00:00",
+  "ts": "2026-11-08T09:55:00+00:00",
   "date": "2026-11-08",
   "now": {
    "battery_soc": 90.0,
-   "load_w": 285.0,
-   "import_w": 263.0,
+   "load_w": 195.0,
+   "import_w": 3.0,
    "export_w": 0.0,
    "solar_w": null,
-   "battery_w": 0.0,
+   "battery_w": -84.0,
    "import_rate_p": 26.65,
    "export_rate_p": 11.06
   },
   "today": {
    "solar_kwh": 0.0,
-   "import_kwh": 11.0,
+   "import_kwh": 11.6,
    "export_kwh": 0.0,
-   "load_kwh": 2.1,
-   "battery_charge_kwh": 8.6,
+   "load_kwh": 3.1,
+   "battery_charge_kwh": 8.7,
    "battery_discharge_kwh": 0.0
   },
   "forecast": {
-   "solar_today_kwh": 2.12,
-   "solar_tomorrow_kwh": 2.25
+   "solar_today_kwh": 1.82,
+   "solar_tomorrow_kwh": 2.08
   },
   "battery_control": {
    "mode": "Control charge & discharge",
-   "status": "Freeze charging"
+   "status": "Hold charging"
   },
   "yesterday_cost": {
-   "import_gbp": 3.73,
-   "export_gbp": 1.39
+   "import_gbp": 4.52,
+   "export_gbp": 1.83
   }
  },
  "days": [
@@ -363,10 +363,10 @@
   {
    "date": "2026-11-08",
    "solar_kwh": 0.0,
-   "import_kwh": 11.0,
+   "import_kwh": 11.6,
    "export_kwh": 0.0,
-   "load_kwh": 2.1,
-   "battery_charge_kwh": 8.6,
+   "load_kwh": 3.1,
+   "battery_charge_kwh": 8.7,
    "battery_discharge_kwh": 0.0
   }
  ]
