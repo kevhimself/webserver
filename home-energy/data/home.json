@@ -1,38 +1,38 @@
 {
- "updated": "2026-11-17T15:55:00+00:00",
+ "updated": "2026-11-17T18:55:00+00:00",
  "source": "Home Assistant",
  "latest": {
-  "ts": "2026-11-17T15:55:00+00:00",
+  "ts": "2026-11-17T18:55:00+00:00",
   "date": "2026-11-17",
   "now": {
-   "battery_soc": 62.0,
-   "load_w": 1137.0,
-   "import_w": 1.0,
+   "battery_soc": 41.0,
+   "load_w": 1989.0,
+   "import_w": 10.0,
    "export_w": 0.0,
    "solar_w": 0.0,
-   "battery_w": 1185.0,
-   "import_rate_p": 26.65,
-   "export_rate_p": 11.06
+   "battery_w": 2154.0,
+   "import_rate_p": 37.2,
+   "export_rate_p": 30.16
   },
   "today": {
    "solar_kwh": 1.796,
-   "import_kwh": 19.5,
-   "export_kwh": 0.0,
-   "load_kwh": 14.6,
+   "import_kwh": 20.9,
+   "export_kwh": 0.1,
+   "load_kwh": 17.6,
    "battery_charge_kwh": 8.7,
-   "battery_discharge_kwh": 2.4
+   "battery_discharge_kwh": 4.3
   },
   "forecast": {
-   "solar_today_kwh": 2.12,
-   "solar_tomorrow_kwh": 2.08
+   "solar_today_kwh": 1.35,
+   "solar_tomorrow_kwh": 1.69
   },
   "battery_control": {
    "mode": "Control charge & discharge",
    "status": "Warn: Inverter 0 unable to read REST dat"
   },
   "yesterday_cost": {
-   "import_gbp": 4.02,
-   "export_gbp": 1.87
+   "import_gbp": 5.83,
+   "export_gbp": 0.67
   }
  },
  "days": [
@@ -444,11 +444,11 @@
   {
    "date": "2026-11-17",
    "solar_kwh": 1.796,
-   "import_kwh": 19.5,
-   "export_kwh": 0.0,
-   "load_kwh": 14.6,
+   "import_kwh": 20.9,
+   "export_kwh": 0.1,
+   "load_kwh": 17.6,
    "battery_charge_kwh": 8.7,
-   "battery_discharge_kwh": 2.4
+   "battery_discharge_kwh": 4.3
   }
  ]
 }
