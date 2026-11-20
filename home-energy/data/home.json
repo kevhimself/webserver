@@ -1,13 +1,13 @@
 {
- "updated": "2026-11-20T21:55:00+00:00",
+ "updated": "2026-11-20T23:58:00+00:00",
  "source": "Home Assistant",
  "latest": {
-  "ts": "2026-11-20T21:55:00+00:00",
+  "ts": "2026-11-20T23:58:00+00:00",
   "date": "2026-11-20",
   "now": {
    "battery_soc": 4.0,
-   "load_w": 290.0,
-   "import_w": 277.0,
+   "load_w": 201.0,
+   "import_w": 191.0,
    "export_w": 0.0,
    "solar_w": 0.0,
    "battery_w": 0.0,
@@ -16,9 +16,9 @@
   },
   "today": {
    "solar_kwh": 1.13,
-   "import_kwh": 21.1,
+   "import_kwh": 21.6,
    "export_kwh": 5.3,
-   "load_kwh": 14.9,
+   "load_kwh": 15.4,
    "battery_charge_kwh": 9.9,
    "battery_discharge_kwh": 8.5
   },
@@ -471,9 +471,9 @@
   {
    "date": "2026-11-20",
    "solar_kwh": 1.13,
-   "import_kwh": 21.1,
+   "import_kwh": 21.6,
    "export_kwh": 5.3,
-   "load_kwh": 14.9,
+   "load_kwh": 15.4,
    "battery_charge_kwh": 9.9,
    "battery_discharge_kwh": 8.5
   }
